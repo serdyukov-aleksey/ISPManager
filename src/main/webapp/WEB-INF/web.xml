@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <display-name>Internet Provider</display-name>
+
+    <welcome-file-list>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!--============================================================
+        Controller
+    =============================================================-->
+    <servlet>
+        <servlet-name>Controller</servlet-name>
+        <servlet-class>com.epam.serdyukov.ispmanager.controller.Controller</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Controller</servlet-name>
+        <url-pattern>/controller</url-pattern>
+    </servlet-mapping>
+
+    <!--============================================================
+	Context listener
+    =============================================================-->
+    <listener>
+        <listener-class>com.epam.serdyukov.ispmanager.controller.listener.ContextListener</listener-class>
+    </listener>
+
+</web-app>
