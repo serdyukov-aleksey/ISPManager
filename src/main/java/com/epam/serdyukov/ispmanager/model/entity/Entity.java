@@ -9,16 +9,21 @@ import java.io.Serializable;
  * 
  */
 public abstract class Entity implements Serializable {
+	private static final long serialVersionUID = 1L;
+	private long id;
 
-	private static final long serialVersionUID = 8466257860808346236L;
+	public Entity() {
+	}
 
-	private Long id;
+	public Entity(long id) {
+		this.id = id;
+	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

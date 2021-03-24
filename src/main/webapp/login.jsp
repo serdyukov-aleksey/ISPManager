@@ -1,7 +1,5 @@
-<%--<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>--%>
-<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
 <%@ include file="/WEB-INF/jspf/directive/page.jspf" %>
-<%--<%@ include file="/WEB-INF/jspf/directive/taglib.jspf" %>--%>
+<%@ include file="/WEB-INF/jspf/directive/taglib.jspf" %>
 
 <!doctype html>
 <html>
@@ -17,8 +15,8 @@
 <form class="form-signin" method="post" action="controller?action=login">
     <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal">ISP management console</h1>
-    <label for="login" class="sr-only">Email address</label>
-    <input type="text" id="login" name="login" class="form-control" placeholder="Login" required autofocus>
+    <label for="login" class="sr-only"></label>
+    <input type="text" id="login" name="login" class="form-control" placeholder=<fmt:message key="login.placeholder.login"/> required autofocus>
     <label for="password" class="sr-only">Password</label>
     <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
     <div class="checkbox mb-3">

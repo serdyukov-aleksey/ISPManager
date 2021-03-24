@@ -1,7 +1,8 @@
-package com.epam.serdyukov.ispmanager.model.pool;
+package com.epam.serdyukov.ispmanager.model.dao.builders;
 
 
 import com.epam.serdyukov.ispmanager.model.entity.Entity;
+import com.epam.serdyukov.ispmanager.model.pool.DBManager;
 
 import java.sql.*;
 import java.util.List;
@@ -103,7 +104,7 @@ public abstract class QueryBuilder<T extends Entity> {
         Connection conn = instance.getConnection();
         try (PreparedStatement statement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             setArgsOfPreparedStatement(statement, args);
-            try (ResultSet rs = statement.executeQuery();) {
+            try (ResultSet rs = statement.executeQuery()) {
                 models = getListOfResult(rs);
             }
         } catch (SQLException e) {
@@ -126,7 +127,7 @@ public abstract class QueryBuilder<T extends Entity> {
         Connection conn = instance.getConnection();
         try (PreparedStatement statement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             setArgsOfPreparedStatement(statement, args);
-            try (ResultSet rs = statement.executeQuery();) {
+            try (ResultSet rs = statement.executeQuery()) {
                 model = getResult(rs);
             }
         } catch (SQLException e) {

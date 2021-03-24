@@ -1,11 +1,10 @@
 package com.epam.serdyukov.ispmanager.model.dao;
 
 
+import com.epam.serdyukov.ispmanager.model.dao.builders.UserQueryBuilder;
 import com.epam.serdyukov.ispmanager.model.entity.User;
 import com.epam.serdyukov.ispmanager.model.pool.DBManager;
-import com.epam.serdyukov.ispmanager.model.pool.QueryBuilder;
-
-import java.util.List;
+import com.epam.serdyukov.ispmanager.model.dao.builders.QueryBuilder;
 
 /**
  * Data access object for User entity.
