@@ -1,6 +1,7 @@
 package com.epam.serdyukov.ispmanager.model.dao.builders;
 
 
+import com.epam.serdyukov.ispmanager.model.entity.Account;
 import com.epam.serdyukov.ispmanager.model.entity.User;
 import com.epam.serdyukov.ispmanager.model.repo.impl.UserDetailsRepoImpl;
 import com.epam.serdyukov.ispmanager.model.repo.IUserDetailsRepo;
@@ -40,7 +41,7 @@ public class UserQueryBuilder extends QueryBuilder<User> {
         user.setBlocked(rs.getBoolean("is_blocked"));
         user.setRoleId(rs.getInt("role_id"));
         user.setDetails(contactDetails.getById(rs.getLong("user_details_id")));
-//        user.setAccount(new Account(rs.getLong("accounts_id")));
+        user.setAccount(new Account(rs.getLong("account_id")));
     }
 
 }
