@@ -533,9 +533,9 @@
                                         <tbody>
                                         <c:forEach var="fullUser" items="${fullUser}">
                                             <tr>
-                                                <td>${fullUser.surname}</td>
-                                                <td>${fullUser.firstName}</td>
-                                                <td>${fullUser.lastName}</td>
+                                                <td>${fullUser.details.getLastName()}</td>
+                                                <td>${fullUser.details.getFirstName()}</td>
+                                                <td></td>
                                                 <td>${fullUser.account.number}</td>
                                                 <td>${fullUser.account.balance}</td>
                                                 <td><tags:isblocked value="${fullUser.blocked}"/></td>

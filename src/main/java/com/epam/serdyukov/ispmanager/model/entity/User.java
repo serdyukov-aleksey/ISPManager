@@ -80,4 +80,8 @@ public class User extends Entity {
 		this.tariffs = tariffs;
 	}
 
+	public String getFirstName(){
+		return details.getFirstName();
+	}
+
 }
