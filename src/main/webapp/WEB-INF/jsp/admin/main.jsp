@@ -510,14 +510,14 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">
-                                                <fmt:message key="table.th.surname"/>
+                                                <fmt:message key="table.th.last_name"/>
                                             </th>
                                             <th scope="col">
                                                 <fmt:message key="table.th.name"/>
                                             </th>
-                                            <th scope="col">
-                                                <fmt:message key="table.th.last_name"/>
-                                            </th>
+<%--                                            <th scope="col">--%>
+<%--                                                <fmt:message key="table.th.last_name"/>--%>
+<%--                                            </th>--%>
                                             <th scope="col">
                                                 <fmt:message key="table.th.account"/>
                                             </th>
@@ -533,30 +533,29 @@
                                         <tbody>
                                         <c:forEach var="fullUser" items="${fullUser}">
                                             <tr>
-                                                <td>${fullUser.details.getLastName()}</td>
-                                                <td>${fullUser.details.getFirstName()}</td>
-                                                <td></td>
-                                                <td>${fullUser.account.number}</td>
-                                                <td>${fullUser.account.balance}</td>
-                                                <td><tags:isblocked value="${fullUser.blocked}"/></td>
+                                                <td>${fullUser.getDetails().getLastName()}</td>
+                                                <td>${fullUser.getDetails().getFirstName()}</td>
+                                                <td>${fullUser.getAccount().getNumber()}</td>
+                                                <td>${fullUser.getAccount().getBalance()}</td>
+                                                <td><tags:isblocked value="${fullUser.isBlocked()}"/></td>
                                                 <td>
                                                     <div class="d-flex justify-content-end">
                                                         <div>
                                                             <form action="controller?action=edit_client"
                                                                   method="post">
                                                                 <input type="hidden" name="user_id"
-                                                                       value="${fullUser.id}">
+                                                                       value="${fullUser.getId()}">
                                                                 <button type="submit"
                                                                         class="btn btn-outline-secondary btn-sm"
                                                                         name="btnLock">
-                                                                        ${fullUser.blocked ? '<i class="material-icons">lock_open</i>' : '<i class="material-icons">lock</i>'}
+                                                                        ${fullUser.isBlocked() ? '<i class="material-icons">lock_open</i>' : '<i class="material-icons">lock</i>'}
                                                                 </button>
                                                             </form>
                                                         </div>
                                                         <div class="ml-1">
                                                             <form method="post" action="controller?action=profile">
                                                                 <input type="hidden" name="user_id"
-                                                                       value="${fullUser.id}">
+                                                                       value="${fullUser.getId()}">
                                                                 <button type="submit"
                                                                         class="btn btn-outline-secondary btn-sm">
                                                                     <i class="material-icons">info</i>
@@ -576,11 +575,11 @@
                                     <form class="mt-2" method="post" action="controller?action=registration">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <label for="surname">
-                                                    <fmt:message key="table.th.surname"/>
+                                                <label for="lastName">
+                                                    <fmt:message key="table.th.lastName"/>
                                                 </label>
-                                                <input type="text" class="form-control" id="surname" name="surname"
-                                                       placeholder="<fmt:message key="profile.modal.placeholder.surname"/>"
+                                                <input type="text" class="form-control" id="lastName" name="lastName"
+                                                       placeholder="<fmt:message key="profile.modal.placeholder.lastName"/>"
                                                        minlength="2" maxlength="40" required>
                                             </div>
                                             <div class="form-group col-md-6">
@@ -614,10 +613,10 @@
                                                                maxlength="40" required>
                                                     </div>
                                                     <div class="flex-fill ml-1">
-                                                        <label for="home">
+                                                        <label for="building">
                                                             <fmt:message key="main.new_user.label.home"/>
                                                         </label>
-                                                        <input type="text" class="form-control" id="home" name="home"
+                                                        <input type="text" class="form-control" id="building" name="building"
                                                                placeholder="<fmt:message key="main.new_user.placeholder.home"/>"
                                                                minlength="2" maxlength="40" required>
                                                     </div>
@@ -634,11 +633,11 @@
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <label for="lastName">
-                                                    <fmt:message key="profile.modal.label.last_name"/>
+                                                <label for="login">
+                                                    <fmt:message key="profile.modal.label.login"/>
                                                 </label>
-                                                <input type="text" class="form-control" id="lastName" name="lastName"
-                                                       placeholder="<fmt:message key="profile.modal.placeholder.last_name"/>"
+                                                <input type="text" class="form-control" id="login" name="login"
+                                                       placeholder="<fmt:message key="profile.modal.placeholder.login"/>"
                                                        minlength="2" maxlength="40" required>
                                             </div>
                                             <div class="form-group col-md-6">

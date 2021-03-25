@@ -41,8 +41,8 @@ public class UserRepoImpl implements IUserRepo {
     @Override
     public void create(User user) {
         long id = queryBuilder.getNextAutoIncrement(instance, GET_NEXT_AUTO_INCREMENT);
-        queryBuilder.execute(instance, CREATE, user.getLogin(), user.getPassword(), user.getDetails().getFirstName(),
-            user.getDetails().getLastName(), user.isBlocked(), user.getRoleId(), id, id);
+        queryBuilder.execute(instance, CREATE, user.getLogin(), user.getPassword(), user.getRoleId(),
+            id, user.isBlocked(), user.getAccount().getId());
     }
 
     @Override

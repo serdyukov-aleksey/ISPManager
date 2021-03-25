@@ -5,12 +5,12 @@
 <html>
 <c:set var="title" value="Страница входа" scope="page"/>
 <%--<jsp:include page="/WEB-INF/templates/_head.jsp"></jsp:include>--%>
-<head>
-    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<%--<head>--%>
+<%--    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">--%>
 
-    <!-- Custom styles for this template -->
-    <link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet">
-</head>
+<%--    <!-- Custom styles for this template -->--%>
+<%--    <link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet">--%>
+<%--</head>--%>
 <body class="text-center">
 <form class="form-signin" method="post" action="controller?action=login">
     <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
