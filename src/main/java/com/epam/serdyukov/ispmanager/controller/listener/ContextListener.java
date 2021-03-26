@@ -73,6 +73,7 @@ public class ContextListener implements ServletContextListener {
         log.debug("ICommand container initialization finished");
     }
 
+
     /**
      * Initializes log4j framework.
      *
@@ -87,6 +88,7 @@ public class ContextListener implements ServletContextListener {
         }
         log("Log4J initialization finished");
     }
+
 
     private void log(String msg) {
         System.out.println("[ContextListener] " + msg);

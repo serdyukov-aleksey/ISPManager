@@ -3,7 +3,7 @@ package com.epam.serdyukov.ispmanager.model.entity;
 import java.util.Objects;
 
 /**
- * @author A.Zarazka
+ * @author Aleksey Serdyukov
  */
 public class Tariff extends Entity {
     private static final long serialVersionUID = 1L;

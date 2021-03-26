@@ -1,6 +1,8 @@
 package com.epam.serdyukov.ispmanager.model.entity;
 
-
+/**
+ * @author Aleksey Serdyukov
+ */
 public class Account extends Entity {
     private static final long serialVersionUID = 1L;
     private long number;

@@ -1,14 +1,16 @@
 package com.epam.serdyukov.ispmanager.model.repo;
 
+
 import com.epam.serdyukov.ispmanager.model.entity.ContactDetails;
-import com.epam.serdyukov.ispmanager.model.repo.impl.UserDetailsRepoImpl;
+import com.epam.serdyukov.ispmanager.model.repository.impl.ContactDetailsRepoImpl;
+import com.epam.serdyukov.ispmanager.model.repository.IContactDetailsRepo;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class UserDetailsRepoImplTest {
 
-  IUserDetailsRepo repo = new UserDetailsRepoImpl();
+  IContactDetailsRepo repo = new ContactDetailsRepoImpl();
 
   @Test
   public void getAll() {
@@ -17,7 +19,7 @@ public class UserDetailsRepoImplTest {
   @Test
   public void getById() {
     ContactDetails cd = repo.getById(1L);
-    assertEquals("Ivanov", cd.getLastName());
+    assertEquals("Kharkiv", cd.getCity());
   }
 
   @Test

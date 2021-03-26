@@ -1,16 +1,13 @@
 package com.epam.serdyukov.ispmanager.controller.command.admin;
 
 import com.epam.serdyukov.ispmanager.controller.Path;
+import com.epam.serdyukov.ispmanager.model.entity.*;
+import com.epam.serdyukov.ispmanager.model.service.*;
 import com.epam.serdyukov.ispmanager.controller.command.ICommand;
-import com.epam.serdyukov.ispmanager.model.entity.Account;
-import com.epam.serdyukov.ispmanager.model.entity.ContactDetails;
-import com.epam.serdyukov.ispmanager.model.entity.Tariff;
-import com.epam.serdyukov.ispmanager.model.entity.User;
-import com.epam.serdyukov.ispmanager.model.services.*;
-import com.epam.serdyukov.ispmanager.model.services.impl.AccountServiceImpl;
-import com.epam.serdyukov.ispmanager.model.services.impl.UserDetailsServiceImpl;
-import com.epam.serdyukov.ispmanager.model.services.impl.TariffServiceImpl;
-import com.epam.serdyukov.ispmanager.model.services.impl.UserServiceImpl;
+import com.epam.serdyukov.ispmanager.model.service.impl.AccountServiceImpl;
+import com.epam.serdyukov.ispmanager.model.service.impl.ContactDetailsServiceImpl;
+import com.epam.serdyukov.ispmanager.model.service.impl.TariffServiceImpl;
+import com.epam.serdyukov.ispmanager.model.service.impl.UserServiceImpl;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,41 +17,43 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * @author Aleksey Serdyukov
+ */
 public class RegistrationCommand implements ICommand {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         String firstName = request.getParameter("firstName").trim();
         String lastName = request.getParameter("lastName").trim();
-//        String surname = request.getParameter("surname").trim();
+        String surname = request.getParameter("surname").trim();
 
         String city = request.getParameter("city").trim();
         String street = request.getParameter("street").trim();
-        String building = request.getParameter("building").trim();
+        String home = request.getParameter("home").trim();
         String apartment = request.getParameter("apartment").trim();
         String email = request.getParameter("email").trim();
         String phone = request.getParameter("phone").trim();
-        String login = request.getParameter("login").trim();
 
         String[] trafficsId = request.getParameterValues("arrTrafficsId");
 
         IUserService userService = new UserServiceImpl();
-        IUserDetailsService detailsService = new UserDetailsServiceImpl();
+        IContactDetailsService detailsService = new ContactDetailsServiceImpl();
         IAccountService accountService = new AccountServiceImpl();
         ITariffService tariffService = new TariffServiceImpl();
 
         ContactDetails details = new ContactDetails();
-        details.setFirstName(firstName);
-        details.setLastName(lastName);
+        details.setId(detailsService.getNextIdValue());
         details.setCity(city);
         details.setStreet(street);
-        details.setBuilding(building);
-        details.setFlat(apartment);
+        details.setHome(home);
+        details.setApartment(apartment);
         details.setEmail(email);
         details.setPhone(phone);
         detailsService.save(details);
 
         Account account = new Account();
+        account.setId(accountService.getNextIdValue());
         account.setNumber(accountService.getNumberContract());
         account.setBalance(0);
         accountService.save(account);
@@ -70,8 +69,11 @@ public class RegistrationCommand implements ICommand {
         }
 
         User newUser = new User();
-        newUser.setLogin(login);
-        newUser.setPassword("str0ngpwd");  //TODO change for generated value
+        newUser.setLogin(details.getPhone());
+        newUser.setPassword(String.valueOf(account.getNumber()));
+        newUser.setSurname(surname);
+        newUser.setFirstName(firstName);
+        newUser.setLastName(lastName);
         newUser.setRoleId(2);
         newUser.setBlocked(true);
         newUser.setDetails(details);

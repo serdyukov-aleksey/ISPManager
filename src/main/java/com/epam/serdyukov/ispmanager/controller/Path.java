@@ -8,6 +8,9 @@ public final class Path {
     public static final String PAGE_MAIN = "/WEB-INF/jsp/admin/main.jsp";
     public static final String PAGE_PROFILE = "/WEB-INF/jsp/admin/profile.jsp";
     public static final String PAGE_ACCOUNT = "/WEB-INF/jsp/client/account.jsp";
+    public static final String PAGE_USER_PROFILE = "/WEB-INF/jsp/client/personaldata.jsp";
+    public static final String PAGE_USER_LIST = "/WEB-INF/jsp/admin/abonents.jsp";
+    public static final String PAGE_SERVICES = "/WEB-INF/jsp/admin/services.jsp";
 
     // common commands
     public static final String COMMAND_LOGIN = "controller?action=login";
@@ -19,6 +22,8 @@ public final class Path {
 
     // admin commands
     public static final String COMMAND_MAIN = "controller?action=main";
+    public static final String COMMAND_SHOW_USERS = "controller?action=users";
+    public static final String COMMAND_SHOW_SERVICES = "controller?action=services";
     public static final String COMMAND_REGISTRATION = "controller?action=registration";
     public static final String COMMAND_EDIT_CLIENT = "controller?action=edit_client";
     public static final String COMMAND_PROFILE = "controller?action=profile";
@@ -33,5 +38,4 @@ public final class Path {
     // i18n
     public static final String LOCALE_NAME_RU = "ru";
     public static final String LOCALE_NAME_EN = "en";
-
 }

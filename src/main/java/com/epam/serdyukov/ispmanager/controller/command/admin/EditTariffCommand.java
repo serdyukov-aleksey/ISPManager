@@ -1,15 +1,18 @@
 package com.epam.serdyukov.ispmanager.controller.command.admin;
 
 import com.epam.serdyukov.ispmanager.controller.Path;
-import com.epam.serdyukov.ispmanager.controller.command.ICommand;
 import com.epam.serdyukov.ispmanager.model.entity.Tariff;
-import com.epam.serdyukov.ispmanager.model.services.ITariffService;
-import com.epam.serdyukov.ispmanager.model.services.impl.TariffServiceImpl;
+import com.epam.serdyukov.ispmanager.model.service.ITariffService;
+import com.epam.serdyukov.ispmanager.model.service.impl.TariffServiceImpl;
+import com.epam.serdyukov.ispmanager.controller.command.ICommand;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * @author Aleksey Serdyukov
+ */
 public class EditTariffCommand implements ICommand {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
@@ -18,7 +21,7 @@ public class EditTariffCommand implements ICommand {
         double price = Double.parseDouble(request.getParameter("price").trim());
         String description = request.getParameter("description").trim();
 
-        String resp = Path.COMMAND_MAIN;
+        String resp = Path.COMMAND_SHOW_SERVICES;
 
         ITariffService service = new TariffServiceImpl();
         Tariff tariff = new Tariff();

@@ -1,7 +1,8 @@
 package com.epam.serdyukov.ispmanager.model.repo;
 
+
 import com.epam.serdyukov.ispmanager.model.entity.User;
-import com.epam.serdyukov.ispmanager.model.repo.impl.UserRepoImpl;
+import com.epam.serdyukov.ispmanager.model.repository.impl.UserRepoImpl;
 import org.junit.Test;
 
 import java.util.List;

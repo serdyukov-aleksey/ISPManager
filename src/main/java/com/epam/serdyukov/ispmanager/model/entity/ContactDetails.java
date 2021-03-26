@@ -1,87 +1,70 @@
 package com.epam.serdyukov.ispmanager.model.entity;
 
-
+/**
+ * @author Aleksey Serdyukov
+ */
 public class ContactDetails extends Entity {
-  private static final long serialVersionUID = 1L;
-  private String firstName;
-  private String LastName;
-  private String city;
-  private String street;
-  private String building;
-  private String flat;
-  private String email;
-  private String phone;
+    private static final long serialVersionUID = 1L;
+    private String city;
+    private String street;
+    private String home;
+    private String apartment;
+    private String email;
+    private String phone;
 
-  public ContactDetails() {
-    super();
-  }
+    public ContactDetails() {
+        super();
+    }
 
-  public ContactDetails(long id) {
-    super(id);
-  }
+    public ContactDetails(long id) {
+        super(id);
+    }
 
-  public String getFirstName() {
-    return firstName;
-  }
+    public String getCity() {
+        return city;
+    }
 
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
-  }
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-  public String getLastName() {
-    return LastName;
-  }
+    public String getStreet() {
+        return street;
+    }
 
-  public void setLastName(String lastName) {
-    LastName = lastName;
-  }
+    public void setStreet(String street) {
+        this.street = street;
+    }
 
-  public String getCity() {
-    return city;
-  }
+    public String getHome() {
+        return home;
+    }
 
-  public void setCity(String city) {
-    this.city = city;
-  }
+    public void setHome(String home) {
+        this.home = home;
+    }
 
-  public String getStreet() {
-    return street;
-  }
+    public String getApartment() {
+        return apartment;
+    }
 
-  public void setStreet(String street) {
-    this.street = street;
-  }
+    public void setApartment(String apartment) {
+        this.apartment = apartment;
+    }
 
-  public String getBuilding() {
-    return building;
-  }
+    public String getEmail() {
+        return email;
+    }
 
-  public String getFlat() {
-    return flat;
-  }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-  public void setFlat(String flat) {
-    this.flat = flat;
-  }
+    public String getPhone() {
+        return phone;
+    }
 
-  public void setBuilding(String building) {
-    this.building = building;
-  }
-
-  public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-  public String getPhone() {
-    return phone;
-  }
-
-  public void setPhone(String phone) {
-    this.phone = phone;
-  }
-
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 }

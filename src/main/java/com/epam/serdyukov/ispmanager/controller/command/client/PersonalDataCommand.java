@@ -1,17 +1,14 @@
 package com.epam.serdyukov.ispmanager.controller.command.client;
 
-
 import com.epam.serdyukov.ispmanager.controller.Path;
-import com.epam.serdyukov.ispmanager.controller.command.ICommand;
 import com.epam.serdyukov.ispmanager.model.entity.Account;
 import com.epam.serdyukov.ispmanager.model.entity.Tariff;
 import com.epam.serdyukov.ispmanager.model.entity.User;
-import com.epam.serdyukov.ispmanager.model.services.IAccountService;
-import com.epam.serdyukov.ispmanager.model.services.ITariffService;
-import com.epam.serdyukov.ispmanager.model.services.IUserService;
-import com.epam.serdyukov.ispmanager.model.services.impl.AccountServiceImpl;
-import com.epam.serdyukov.ispmanager.model.services.impl.TariffServiceImpl;
-import com.epam.serdyukov.ispmanager.model.services.impl.UserServiceImpl;
+import com.epam.serdyukov.ispmanager.model.service.*;
+import com.epam.serdyukov.ispmanager.controller.command.ICommand;
+import com.epam.serdyukov.ispmanager.model.service.impl.AccountServiceImpl;
+import com.epam.serdyukov.ispmanager.model.service.impl.TariffServiceImpl;
+import com.epam.serdyukov.ispmanager.model.service.impl.UserServiceImpl;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +17,9 @@ import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
 
-
+/**
+ * @author Aleksey Serdyukov
+ */
 public class PersonalDataCommand implements ICommand {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {

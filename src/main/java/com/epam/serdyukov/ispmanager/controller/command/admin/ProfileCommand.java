@@ -1,12 +1,12 @@
 package com.epam.serdyukov.ispmanager.controller.command.admin;
 
 import com.epam.serdyukov.ispmanager.controller.Path;
-import com.epam.serdyukov.ispmanager.controller.command.ICommand;
 import com.epam.serdyukov.ispmanager.model.entity.User;
-import com.epam.serdyukov.ispmanager.model.services.*;
-import com.epam.serdyukov.ispmanager.model.services.impl.AccountServiceImpl;
-import com.epam.serdyukov.ispmanager.model.services.impl.UserDetailsServiceImpl;
-import com.epam.serdyukov.ispmanager.model.services.impl.UserServiceImpl;
+import com.epam.serdyukov.ispmanager.model.service.*;
+import com.epam.serdyukov.ispmanager.controller.command.ICommand;
+import com.epam.serdyukov.ispmanager.model.service.impl.AccountServiceImpl;
+import com.epam.serdyukov.ispmanager.model.service.impl.ContactDetailsServiceImpl;
+import com.epam.serdyukov.ispmanager.model.service.impl.UserServiceImpl;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.HashSet;
 
+/**
+ * @author Aleksey Serdyukov
+ */
 public class ProfileCommand implements ICommand {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
@@ -41,7 +44,7 @@ public class ProfileCommand implements ICommand {
 
     private void show(HttpServletRequest request, long id) {
         IUserService userService = new UserServiceImpl();
-        IUserDetailsService detailsService = new UserDetailsServiceImpl();
+        IContactDetailsService detailsService = new ContactDetailsServiceImpl();
         IAccountService accountService = new AccountServiceImpl();
 
         User user = userService.find(id);
@@ -50,7 +53,5 @@ public class ProfileCommand implements ICommand {
         user.setAccount(accountService.find(user.getAccount().getId()));
         user.setTariffs(new HashSet<>(userService.findUserTariffs(user)));
         request.setAttribute("fullUser", user);
-
-
     }
 }

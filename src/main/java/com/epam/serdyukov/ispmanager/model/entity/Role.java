@@ -1,6 +1,8 @@
 package com.epam.serdyukov.ispmanager.model.entity;
 
-
+/**
+ * @author Aleksey Serdyukov
+ */
 public enum Role {
     ADMIN, CLIENT;
 

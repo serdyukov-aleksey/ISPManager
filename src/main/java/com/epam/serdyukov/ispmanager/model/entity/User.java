@@ -4,84 +4,102 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * User entity.
- * 
- * @author D.Kolesnikov
- * 
+ * @author Aleksey Serdyukov
  */
 public class User extends Entity {
+    private static final long serialVersionUID = 1L;
+    private String login;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private String surname;
+    private boolean blocked;
+    private int roleId;
+    private Account account;
+    private ContactDetails details;
+    private Set<Tariff> tariffs;
 
-	private static final long serialVersionUID = 1L;
-	private String login;
-	private String password;
-	private boolean blocked;
-	private int roleId;
-	private Account account;
-	private ContactDetails details;
-	private Set<Tariff> tariffs;
+    public User() {
+        this.tariffs = new HashSet<>();
+    }
 
-	public User() {
-		this.tariffs = new HashSet<>();
-	}
+    public String getLogin() {
+        return login;
+    }
 
-	public String getLogin() {
-		return login;
-	}
+    public void setLogin(String login) {
+        this.login = login;
+    }
 
-	public void setLogin(String login) {
-		this.login = login;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public boolean isBlocked() {
-		return blocked;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public void setBlocked(boolean blocked) {
-		this.blocked = blocked;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public int getRoleId() {
-		return roleId;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public void setRoleId(int roleId) {
-		this.roleId = roleId;
-	}
+    public String getSurname() {
+        return surname;
+    }
 
-	public Account getAccount() {
-		return account;
-	}
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
 
-	public void setAccount(Account account) {
-		this.account = account;
-	}
+    public boolean isBlocked() {
+        return blocked;
+    }
 
-	public ContactDetails getDetails() {
-		return details;
-	}
+    public void setBlocked(boolean blocked) {
+        this.blocked = blocked;
+    }
 
-	public void setDetails(ContactDetails details) {
-		this.details = details;
-	}
+    public int getRoleId() {
+        return roleId;
+    }
 
-	public Set<Tariff> getTariffs() {
-		return tariffs;
-	}
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
 
-	public void setTariffs(Set<Tariff> tariffs) {
-		this.tariffs = tariffs;
-	}
+    public Account getAccount() {
+        return account;
+    }
 
-	public String getFirstName(){
-		return details.getFirstName();
-	}
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 
+    public ContactDetails getDetails() {
+        return details;
+    }
+
+    public void setDetails(ContactDetails details) {
+        this.details = details;
+    }
+
+    public Set<Tariff> getTariffs() {
+        return tariffs;
+    }
+
+    public void setTariffs(Set<Tariff> tariffs) {
+        this.tariffs = tariffs;
+    }
 }

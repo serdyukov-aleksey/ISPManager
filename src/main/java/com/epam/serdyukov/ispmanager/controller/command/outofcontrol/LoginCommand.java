@@ -1,15 +1,20 @@
 package com.epam.serdyukov.ispmanager.controller.command.outofcontrol;
 
 import com.epam.serdyukov.ispmanager.controller.Path;
-import com.epam.serdyukov.ispmanager.controller.command.ICommand;
-import com.epam.serdyukov.ispmanager.model.dao.UserDao;
 import com.epam.serdyukov.ispmanager.model.entity.Role;
 import com.epam.serdyukov.ispmanager.model.entity.User;
+import com.epam.serdyukov.ispmanager.model.service.IUserService;
+import com.epam.serdyukov.ispmanager.model.service.impl.UserServiceImpl;
+import com.epam.serdyukov.ispmanager.controller.command.ICommand;
+import org.mindrot.jbcrypt.BCrypt;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * @author Aleksey Serdyukov
+ */
 public class LoginCommand implements ICommand {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
@@ -28,10 +33,10 @@ public class LoginCommand implements ICommand {
             return forward;
         }
 
-        UserDao userDao = new UserDao();
-        User user = userDao.getByLogin(login);
+        IUserService service = new UserServiceImpl();
+        User user = service.findByLogin(login);
 
-        if (user == null || !password.equals(user.getPassword())) {
+        if (user == null || !BCrypt.checkpw(password, user.getPassword())) {
             errorMessage = "Cannot find user with such login or password";
             request.setAttribute("errorMessage", errorMessage);
             return forward;
@@ -39,7 +44,7 @@ public class LoginCommand implements ICommand {
             Role userRole = Role.getRole(user);
 
             if(userRole == Role.ADMIN){
-                forward = Path.COMMAND_MAIN;
+                forward = Path.COMMAND_SHOW_USERS;
             }
 
             if (userRole == Role.CLIENT){

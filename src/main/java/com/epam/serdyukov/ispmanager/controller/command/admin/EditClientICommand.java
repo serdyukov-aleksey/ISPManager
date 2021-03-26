@@ -1,12 +1,12 @@
 package com.epam.serdyukov.ispmanager.controller.command.admin;
 
 import com.epam.serdyukov.ispmanager.controller.Path;
-import com.epam.serdyukov.ispmanager.controller.command.ICommand;
 import com.epam.serdyukov.ispmanager.model.entity.User;
-import com.epam.serdyukov.ispmanager.model.services.*;
-import com.epam.serdyukov.ispmanager.model.services.impl.AccountServiceImpl;
-import com.epam.serdyukov.ispmanager.model.services.impl.UserDetailsServiceImpl;
-import com.epam.serdyukov.ispmanager.model.services.impl.UserServiceImpl;
+import com.epam.serdyukov.ispmanager.model.service.*;
+import com.epam.serdyukov.ispmanager.controller.command.ICommand;
+import com.epam.serdyukov.ispmanager.model.service.impl.AccountServiceImpl;
+import com.epam.serdyukov.ispmanager.model.service.impl.ContactDetailsServiceImpl;
+import com.epam.serdyukov.ispmanager.model.service.impl.UserServiceImpl;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -15,14 +15,17 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashSet;
 
+/**
+ * @author Aleksey Serdyukov
+ */
 public class EditClientICommand implements ICommand {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         long id = Long.parseLong(request.getParameter("user_id"));
-        String forward = Path.COMMAND_MAIN;
+        String forward = Path.COMMAND_SHOW_USERS;
 
         IUserService userService = new UserServiceImpl();
-        IUserDetailsService detailsService = new UserDetailsServiceImpl();
+        IContactDetailsService detailsService = new ContactDetailsServiceImpl();
         IAccountService accountService = new AccountServiceImpl();
 
         User user;
@@ -56,13 +59,14 @@ public class EditClientICommand implements ICommand {
 
     private String update(HttpServletRequest request, HttpServletResponse response, IUserService userService, User user) {
         String resp = Path.COMMAND_PROFILE;
+        String surname = request.getParameter("surname");
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String[] trafficsId = request.getParameterValues("arrTrafficsId");
 
-
-        user.getDetails().setFirstName(firstName);
-        user.getDetails().setLastName(lastName);
+        user.setSurname(surname);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
         userService.update(user);
         userService.removeLinksUsersHasTariffs(user);
         if (trafficsId != null) {
@@ -81,7 +85,7 @@ public class EditClientICommand implements ICommand {
     }
 
     private String blockUser(HttpServletResponse response, IUserService userService, User user) {
-        String resp = Path.COMMAND_MAIN;
+        String resp = Path.COMMAND_SHOW_USERS;
         if (user.isBlocked()) {
             user.setBlocked(false);
             userService.update(user);
@@ -99,7 +103,7 @@ public class EditClientICommand implements ICommand {
     }
 
     private String goBack(HttpServletRequest request, HttpServletResponse response) {
-        String resp = Path.COMMAND_MAIN;
+        String resp = Path.COMMAND_SHOW_USERS;
         HttpSession session = request.getSession();
         session.removeAttribute("newUser");
 

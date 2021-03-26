@@ -1,9 +1,8 @@
 package com.epam.serdyukov.ispmanager.controller.filter;
 
+import org.apache.log4j.Logger;
 import com.epam.serdyukov.ispmanager.controller.Path;
 import com.epam.serdyukov.ispmanager.model.entity.Role;
-import org.apache.log4j.Logger;
-
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;

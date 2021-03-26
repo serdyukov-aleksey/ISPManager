@@ -1,5 +1,5 @@
-<%--<%@ include file="/WEB-INF/jspf/directive/taglib.jspf" %>--%>
-<%--<%@ include file="/WEB-INF/jspf/directive/page.jspf" %>--%>
+<%@ include file="/WEB-INF/jspf/directive/taglib.jspf" %>
+<%@ include file="/WEB-INF/jspf/directive/page.jspf" %>
 
 <head>
     <!-- Required meta tags -->
@@ -10,6 +10,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-<%--    <title> ${title}</title>--%>
+    <!-- Matherial Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <title> ${title}</title>
 </head>

@@ -24,10 +24,10 @@ public class Controller extends HttpServlet {
 
     private void proccesRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         CommandFactory commandFactory = CommandFactory.commandFactory();
-        ICommand iCommand = commandFactory.getCommand(req);
+        ICommand ICommand = commandFactory.getCommand(req);
 
         // extract command name from the request
-        String page = iCommand.execute(req, resp);
+        String page = ICommand.execute(req, resp);
         RequestDispatcher dispatcher = req.getRequestDispatcher(page);
 
         // if the forward address is not null go to the address

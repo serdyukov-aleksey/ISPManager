@@ -1,13 +1,12 @@
 package com.epam.serdyukov.ispmanager.controller.command.admin;
 
-
 import com.epam.serdyukov.ispmanager.controller.Path;
-import com.epam.serdyukov.ispmanager.controller.command.ICommand;
 import com.epam.serdyukov.ispmanager.model.entity.PackageServices;
 import com.epam.serdyukov.ispmanager.model.entity.Tariff;
 import com.epam.serdyukov.ispmanager.model.entity.User;
-import com.epam.serdyukov.ispmanager.model.services.*;
-import com.epam.serdyukov.ispmanager.model.services.impl.*;
+import com.epam.serdyukov.ispmanager.model.service.*;
+import com.epam.serdyukov.ispmanager.controller.command.ICommand;
+import com.epam.serdyukov.ispmanager.model.service.impl.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,14 +14,16 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-
+/**
+ * @author Aleksey Serdyukov
+ */
 public class MainCommand implements ICommand {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         IPackageService IPackageService = new PackageServiceImpl();
         ITariffService ITariffService = new TariffServiceImpl();
         IUserService IUserService = new UserServiceImpl();
-        IUserDetailsService detailsService = new UserDetailsServiceImpl();
+        IContactDetailsService detailsService = new ContactDetailsServiceImpl();
         IAccountService IAccountService = new AccountServiceImpl();
 
         List<PackageServices> services = IPackageService.findAll();
