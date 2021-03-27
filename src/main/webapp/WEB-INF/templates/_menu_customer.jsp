@@ -12,6 +12,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="controller?action=user_profile">Personal data</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="controller?action=transactions">Transactions</a>
+            </li>
         </ul>
         <div class="dropdown">
             <button class="btn btn-outline-secondary btn-sm" type="button" id="dropdownMenuButton"

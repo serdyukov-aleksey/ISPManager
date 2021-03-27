@@ -31,7 +31,7 @@
         <%-- Список абонентов --%>
         <div class="tab-pane fade show active" id="users" role="tabpanel"
              aria-labelledby="internet-tab">
-            <table class="table table-hover mt-2">
+            <table class="table table-striped">
                 <thead>
                 <tr>
                     <th scope="col">

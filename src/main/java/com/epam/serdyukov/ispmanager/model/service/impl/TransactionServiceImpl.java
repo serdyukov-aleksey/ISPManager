@@ -63,4 +63,9 @@ public class TransactionServiceImpl implements ITransactionService {
   public void save(Transaction transaction) {
     repo.create(transaction);
   }
+
+  @Override
+  public List<Transaction> getAllByAccount(long id) {
+    return repo.getAllByAccount(id);
+  }
 }

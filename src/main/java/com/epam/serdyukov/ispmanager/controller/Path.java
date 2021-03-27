@@ -11,6 +11,7 @@ public final class Path {
     public static final String PAGE_USER_PROFILE = "/WEB-INF/jsp/client/personaldata.jsp";
     public static final String PAGE_USER_LIST = "/WEB-INF/jsp/admin/abonents.jsp";
     public static final String PAGE_SERVICES = "/WEB-INF/jsp/admin/services.jsp";
+    public static final String PAGE_TRANSACTIONS = "/WEB-INF/jsp/client/transactions.jsp";
 
     // common commands
     public static final String COMMAND_LOGIN = "controller?action=login";
@@ -34,6 +35,7 @@ public final class Path {
     // client commands
     public static final String COMMAND_ACCOUNT = "controller?action=account";
     public static final String COMMAND_PERSONAL_DATA = "controller?action=personal_data";
+    public static final String COMMAND_TRANSACTIONS = "controller?action=transactions";
 
     // i18n
     public static final String LOCALE_NAME_RU = "ru";

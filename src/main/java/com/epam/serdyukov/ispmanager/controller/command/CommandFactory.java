@@ -3,6 +3,7 @@ package com.epam.serdyukov.ispmanager.controller.command;
 import com.epam.serdyukov.ispmanager.controller.command.admin.*;
 import com.epam.serdyukov.ispmanager.controller.command.client.AccountCommand;
 import com.epam.serdyukov.ispmanager.controller.command.client.PersonalDataCommand;
+import com.epam.serdyukov.ispmanager.controller.command.client.TransactionCommand;
 import com.epam.serdyukov.ispmanager.controller.command.client.UserProfileCommand;
 import com.epam.serdyukov.ispmanager.controller.command.common.LogoutCommand;
 import com.epam.serdyukov.ispmanager.controller.command.common.NoCommand;
@@ -56,6 +57,7 @@ public class CommandFactory {
         commands.put("account", new AccountCommand());
         commands.put("personal_data", new PersonalDataCommand());
         commands.put("user_profile", new UserProfileCommand());
+        commands.put("transactions", new TransactionCommand());
     }
 
     public ICommand getCommand(HttpServletRequest request) {

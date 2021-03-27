@@ -4,6 +4,7 @@ import com.epam.serdyukov.ispmanager.model.entity.Transaction;
 import com.epam.serdyukov.ispmanager.model.entity.User;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public interface ITransactionService {
   BigDecimal calcTransactionsByAccount(long id);
@@ -13,4 +14,6 @@ public interface ITransactionService {
   void saveDailyDebtsByAllUsers();
 
   void save(Transaction transaction);
+
+  List<Transaction> getAllByAccount (long id);
 }
