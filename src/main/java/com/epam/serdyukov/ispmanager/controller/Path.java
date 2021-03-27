@@ -35,6 +35,7 @@ public final class Path {
     // client commands
     public static final String COMMAND_ACCOUNT = "controller?action=account";
     public static final String COMMAND_PERSONAL_DATA = "controller?action=personal_data";
+    public static final String COMMAND_SAVE_PROFILE = "controller?action=save_profile";
     public static final String COMMAND_TRANSACTIONS = "controller?action=transactions";
 
     // i18n

@@ -15,7 +15,7 @@ public class ContactDetailsRepoImpl implements IContactDetailsRepo {
     private static final String CREATE = "INSERT INTO contact_details (id, city, street, home, apartment, email, phone) VALUES (?, ?, ?, ?, ?, ?, ?)";
     private static final String GET_ALL = "SELECT * FROM contact_details";
     private static final String GET_BY_ID = "SELECT id, city, street, home, apartment, email, phone FROM contact_details WHERE id = ?";
-    private static final String UPDATE = "UPDATE contact_details SET email = ?, phone = ? WHERE id = ?";
+    private static final String UPDATE = "UPDATE contact_details SET city = ?, street = ?, home = ?, apartment = ?, email = ?, phone = ? WHERE id = ?";
     private static final String DELETE = "DELETE FROM contact_details WHERE id = ?";
     private static final String GET_NEXT_AUTO_INCREMENT = "SELECT MAX(id)+1 FROM contact_details";
 
@@ -40,7 +40,9 @@ public class ContactDetailsRepoImpl implements IContactDetailsRepo {
 
     @Override
     public void update(ContactDetails details) {
-        this.queryBuilder.execute(instance, UPDATE, details.getEmail(), details.getPhone(), details.getId());
+        this.queryBuilder.execute(instance, UPDATE,
+            details.getCity(), details.getStreet(), details.getHome(), details.getApartment(),
+            details.getEmail(), details.getPhone(), details.getId());
     }
 
     @Override

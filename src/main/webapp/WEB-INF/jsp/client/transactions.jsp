@@ -38,6 +38,11 @@
         </c:forEach>
         </tbody>
     </table>
+    <div class="col">
+        <h5><fmt:message
+                key="account.menu.private_office.label.balance"/>:</h5>
+        value="${fullUser.account.balance}"
+    </div>
 </div>
 <jsp:include page="/WEB-INF/templates/_scripts.jsp"></jsp:include>
 </body>

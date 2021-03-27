@@ -8,6 +8,7 @@ import com.epam.serdyukov.ispmanager.model.service.impl.AccountServiceImpl;
 import com.epam.serdyukov.ispmanager.model.service.impl.ContactDetailsServiceImpl;
 import com.epam.serdyukov.ispmanager.model.service.impl.TariffServiceImpl;
 import com.epam.serdyukov.ispmanager.model.service.impl.UserServiceImpl;
+import org.mindrot.jbcrypt.BCrypt;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,6 +29,8 @@ public class RegistrationCommand implements ICommand {
         String firstName = request.getParameter("firstName").trim();
         String lastName = request.getParameter("lastName").trim();
         String surname = request.getParameter("surname").trim();
+        String login = request.getParameter("login").trim();
+        String password = request.getParameter("password").trim();
 
         String city = request.getParameter("city").trim();
         String street = request.getParameter("street").trim();
@@ -70,8 +73,8 @@ public class RegistrationCommand implements ICommand {
         }
 
         User newUser = new User();
-        newUser.setLogin(details.getPhone());
-        newUser.setPassword(String.valueOf(account.getNumber()));
+        newUser.setLogin(login);
+        newUser.setPassword(BCrypt.hashpw(password, BCrypt.gensalt()));
         newUser.setSurname(surname);
         newUser.setFirstName(firstName);
         newUser.setLastName(lastName);

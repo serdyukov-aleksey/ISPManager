@@ -203,7 +203,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="collapse mt-2" id="collapse-inet-tariff">
+                <div class="collapse mt-2 show" id="collapse-inet-tariff">
                     <div class="card card-body">
                         <h4><fmt:message
                                 key="account.menu.private_office.card.title.internet"/></h4>
@@ -298,7 +298,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="collapse mt-2" id="collapse-iptv-tariff">
+                <div class="collapse mt-2 show" id="collapse-iptv-tariff">
                     <div class="card card-body">
                         <h4><fmt:message key="account.menu.private_office.card.title.iptv"/></h4>
                         <table class="table table-hover mt-2">
@@ -391,7 +391,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="collapse mt-2" id="collapse-phone-tariff">
+                <div class="collapse mt-2 show" id="collapse-phone-tariff">
                     <div class="card card-body">
                         <h4><fmt:message key="account.menu.private_office.card.title.phone"/></h4>
                         <table class="table table-hover mt-2">

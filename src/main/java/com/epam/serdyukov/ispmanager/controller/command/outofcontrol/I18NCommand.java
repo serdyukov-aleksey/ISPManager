@@ -29,7 +29,7 @@ public class I18NCommand implements ICommand {
             session.setAttribute(defaultLocale, Path.LOCALE_NAME_EN);
         }
 
-        User user = (User) session.getAttribute("fullUser");
+        User user = (User) session.getAttribute("user");
         String url = (user.getRoleId()==1) ? "controller?action=users":"controller?action=account";
         return url;
     }

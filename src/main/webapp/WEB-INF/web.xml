@@ -86,7 +86,7 @@
         </init-param>
         <init-param>
             <param-name>client</param-name>
-            <param-value>account personal_data user_profile transactions</param-value>
+            <param-value>account personal_data user_profile transactions save_profile</param-value>
         </init-param>
         <init-param>
             <param-name>common</param-name>

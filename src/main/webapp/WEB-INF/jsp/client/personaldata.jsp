@@ -102,6 +102,16 @@
             </div>
         </div>
     </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="password">
+                <fmt:message key="profile.label.password"/>
+            </label>
+            <input type="password" class="form-control" id="password" name="password"
+                   value=""
+                   minlength="6" maxlength="40">
+        </div>
+    </div>
     <button type="submit" class="btn btn-dark">
         <fmt:message key="account.menu.edit.button.save"/>
     </button>

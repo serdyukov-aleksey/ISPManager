@@ -189,160 +189,25 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-12">
-                        <div class="d-flex">
-                            <div class="flex-fill">
-                                <button class="btn btn-outline-success" style="width: 100%"
-                                        type="button"
-                                        data-toggle="collapse"
-                                        data-target="#collapse-inet-tariff"
-                                        aria-expanded="false"
-                                        aria-controls="collapse-inet-tariff">
-                                    <fmt:message
-                                            key="account.menu.private_office.button.internet"/>
-                                </button>
-                            </div>
-                            <div class="flex-fill ml-1">
-                                <button class="btn btn-outline-warning" style="width: 100%"
-                                        type="button"
-                                        data-toggle="collapse"
-                                        data-target="#collapse-iptv-tariff"
-                                        aria-expanded="false"
-                                        aria-controls="collapse-iptv-tariff">
-                                    <fmt:message key="account.menu.private_office.button.iptv"/>
-                                </button>
-                            </div>
-                            <div class="flex-fill ml-1">
-                                <button class="btn btn-outline-info" style="width: 100%"
-                                        type="button"
-                                        data-toggle="collapse"
-                                        data-target="#collapse-phone-tariff"
-                                        aria-expanded="false"
-                                        aria-controls="collapse-phone-tariff">
-                                    <fmt:message
-                                            key="account.menu.private_office.button.phone"/>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="collapse mt-2" id="collapse-inet-tariff">
-                            <div class="card card-body">
-                                <h4><fmt:message
-                                        key="account.menu.private_office.card.title.internet"/></h4>
-                                <table class="table table-hover mt-2">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">
-                                            <fmt:message key="table.th.tariff"/>
-                                        </th>
-                                        <th scope="col">
-                                            <fmt:message key="table.th.cost"/>
-                                        </th>
-                                        <th scope="col">
-                                            <fmt:message key="table.th.description"/>
-                                        </th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <c:forEach var="fullUser" items="${internetTariffs}">
-                                        <tr>
-                                            <td>${fullUser.name}</td>
-                                            <td>${fullUser.price}</td>
-                                            <td>${fullUser.description}</td>
-                                            <td>
-                                                <div class="d-flex justify-content-end">
-                                                    <label>
-                                                        <input type="checkbox"
-                                                               name="arrTrafficsId"
-                                                               value="${fullUser.id}">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </c:forEach>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="collapse mt-2" id="collapse-iptv-tariff">
-                            <div class="card card-body">
-                                <h4><fmt:message key="main.tab.iptv"/></h4>
-                                <table class="table table-hover mt-2">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">
-                                            <fmt:message key="table.th.tariff"/>
-                                        </th>
-                                        <th scope="col">
-                                            <fmt:message key="table.th.cost"/>
-                                        </th>
-                                        <th scope="col">
-                                            <fmt:message key="table.th.description"/>
-                                        </th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <c:forEach var="fullUser" items="${iptvTariffs}">
-                                    <tr>
-                                        <td>${fullUser.name}</td>
-                                        <td>${fullUser.price}</td>
-                                        <td>${fullUser.description}</td>
-                                        <td>
-                                            <div class="d-flex justify-content-end">
-                                                <label>
-                                                    <input type="checkbox" name="arrTrafficsId"
-                                                           value="${fullUser.id}">
-                                                </label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    </c:forEach>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="collapse mt-2" id="collapse-phone-tariff">
-                            <div class="card card-body">
-                                <h4><fmt:message key="main.tab.phone"/></h4>
-                                <table class="table table-hover mt-2">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">
-                                            <fmt:message key="table.th.tariff"/>
-                                        </th>
-                                        <th scope="col">
-                                            <fmt:message key="table.th.cost"/>
-                                        </th>
-                                        <th scope="col">
-                                            <fmt:message key="table.th.description"/>
-                                        </th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <c:forEach var="fullUser" items="${telephonyTariffs}">
-                                        <tr>
-                                            <td>${fullUser.name}</td>
-                                            <td>${fullUser.price}</td>
-                                            <td>${fullUser.description}</td>
-                                            <td>
-                                                <div class="d-flex justify-content-end">
-                                                    <label>
-                                                        <input type="checkbox"
-                                                               name="arrTrafficsId"
-                                                               value="${fullUser.id}">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </c:forEach>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                    <div class="form-group col-md-6">
+                        <label for="login">
+                            <fmt:message key="account.menu.edit.label.login"/>
+                        </label>
+                        <input type="text" class="form-control" id="login" name="login"
+                               placeholder="<fmt:message key="account.menu.edit.placeholder.login"/>"
+                               minlength="2" maxlength="40" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="password">
+                            <fmt:message key="account.menu.edit.label.password"/>
+                        </label>
+                        <input type="password" class="form-control" id="password" name="password"
+                               placeholder="<fmt:message key="account.menu.edit.placeholder.password"/>"
+                               minlength="6" maxlength="40" required>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">
+
+                <button type="submit" class="btn btn-dark">
                     <fmt:message key="account.menu.edit.button.save"/>
                 </button>
             </form>

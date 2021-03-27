@@ -10,16 +10,6 @@
 <div class="container">
     <div class="card border-dark p-2 mt-3 mb-3">
         <div class="d-flex justify-content-start">
-<%--            <form method="post" action="controller?action=edit_client">--%>
-<%--                <input type="hidden" name="user_id" value="${fullUser.id}">--%>
-<%--                <button type="submit"--%>
-<%--                        name="btnBack"--%>
-<%--                        class="btn btn-outline-secondary btn-sm"--%>
-<%--                        data-toggle="tooltip" data-placement="top" title="Home">--%>
-<%--                    <i class="material-icons">home</i>--%>
-<%--                </button>--%>
-<%--            </form>--%>
-
             <div class="pl-1">
                 <button type="submit"
                         class="btn btn-outline-secondary btn-sm"
@@ -132,7 +122,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" name="btnChangeUser" class="btn btn-primary">
+                                    <button type="submit" name="btnChangeUser" class="btn btn-dark">
                                         <fmt:message key="profile.modal.button.save"/>
                                     </button>
                                 </form>
@@ -187,15 +177,6 @@
                             <div class="col-9">
                                 <input type="text" readonly class="form-control-plaintext" id="login"
                                        value="${fullUser.login}">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="password" class="col-sm-3 col-form-label">
-                                <fmt:message key="profile.label.password"/>
-                            </label>
-                            <div class="col-9">
-                                <input type="text" readonly class="form-control-plaintext" id="password"
-                                       value="${fullUser.password}">
                             </div>
                         </div>
                     </div>

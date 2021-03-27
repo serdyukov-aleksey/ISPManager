@@ -450,7 +450,7 @@
                                   maxlength="250"
                                   required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-dark">
                         <fmt:message key="main.modal.button.save"/>
                     </button>
                 </form>

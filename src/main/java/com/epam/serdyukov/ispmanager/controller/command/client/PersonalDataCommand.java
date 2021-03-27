@@ -29,30 +29,13 @@ public class PersonalDataCommand implements ICommand {
 
         IUserService userService =  UserServiceImpl.getInstance();
         ITariffService tariffService = new TariffServiceImpl();
-        IAccountService accountService =  AccountServiceImpl.getInstance();
 
         String forward = Path.COMMAND_ACCOUNT;
 
         if (request.getParameterValues("arrTrafficsId") != null) {
             String[] trafficsId = request.getParameterValues("arrTrafficsId");
             userService.saveLinksUsersHasTariffs(fullUser, trafficsId);
-            BigDecimal oldBalance = fullUser.getAccount().getBalance();
-            BigDecimal result = BigDecimal.ZERO;
             List<Tariff> tariffs = tariffService.findAll();
-            for (Tariff tariff : tariffs) {
-                for (String id : trafficsId) {
-                    if (tariff.getId() == Long.parseLong(id)) {
-                        result = oldBalance.subtract(BigDecimal.valueOf(tariff.getPrice()));
-                    }
-                }
-            }
-            if (!fullUser.isBlocked() && result.compareTo(BigDecimal.ZERO) < 0) {
-                fullUser.setBlocked(true);
-                userService.update(fullUser);
-            }
-            Account account = fullUser.getAccount();
-            account.setBalance(result);
-            accountService.update(account);
             try {
                 response.sendRedirect(forward);
             } catch (IOException e) {
