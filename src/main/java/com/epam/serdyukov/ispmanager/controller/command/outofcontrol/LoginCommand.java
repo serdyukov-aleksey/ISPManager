@@ -33,7 +33,7 @@ public class LoginCommand implements ICommand {
             return forward;
         }
 
-        IUserService service = new UserServiceImpl();
+        IUserService service =  UserServiceImpl.getInstance();
         User user = service.findByLogin(login);
 
         if (user == null || !BCrypt.checkpw(password, user.getPassword())) {

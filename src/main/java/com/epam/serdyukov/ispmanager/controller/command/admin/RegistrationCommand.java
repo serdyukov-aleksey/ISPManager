@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -37,9 +38,9 @@ public class RegistrationCommand implements ICommand {
 
         String[] trafficsId = request.getParameterValues("arrTrafficsId");
 
-        IUserService userService = new UserServiceImpl();
+        IUserService userService =  UserServiceImpl.getInstance();
         IContactDetailsService detailsService = new ContactDetailsServiceImpl();
-        IAccountService accountService = new AccountServiceImpl();
+        IAccountService accountService =  AccountServiceImpl.getInstance();
         ITariffService tariffService = new TariffServiceImpl();
 
         ContactDetails details = new ContactDetails();
@@ -55,7 +56,7 @@ public class RegistrationCommand implements ICommand {
         Account account = new Account();
         account.setId(accountService.getNextIdValue());
         account.setNumber(accountService.getNumberContract());
-        account.setBalance(0);
+        account.setBalance(BigDecimal.ZERO);
         accountService.save(account);
 
         Set<Tariff> tariffs;

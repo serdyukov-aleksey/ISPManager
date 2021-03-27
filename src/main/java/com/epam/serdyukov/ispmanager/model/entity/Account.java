@@ -1,12 +1,14 @@
 package com.epam.serdyukov.ispmanager.model.entity;
 
+import java.math.BigDecimal;
+
 /**
  * @author Aleksey Serdyukov
  */
 public class Account extends Entity {
     private static final long serialVersionUID = 1L;
     private long number;
-    private double balance;
+    private BigDecimal balance;
 
     public Account() {
     }
@@ -23,11 +25,11 @@ public class Account extends Entity {
         this.number = number;
     }
 
-    public double getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 

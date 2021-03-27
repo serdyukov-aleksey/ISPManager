@@ -70,7 +70,7 @@
                                                 </label>
                                                 <input type="number" min="0" minlength="1"
                                                        class="form-control"
-                                                       name="account_balance"
+                                                       name="amount"
                                                        id="recipient-name" required>
                                             </div>
                                             <div class="col-md-6 mb-3">

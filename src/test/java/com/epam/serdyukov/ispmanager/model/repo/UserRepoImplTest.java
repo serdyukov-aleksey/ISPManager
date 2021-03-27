@@ -16,7 +16,7 @@ public class UserRepoImplTest {
   @Test
   public void getAll() {
     List<User> users  = repo.getAll();
-    assertEquals(2, repo.getAll().size());
+    assertEquals(8, repo.getAll().size());
 
   }
 
@@ -38,6 +38,8 @@ public class UserRepoImplTest {
 
   @Test
   public void getByLogin() {
+    User user = repo.getByLogin("admin");
+
   }
 
   @Test

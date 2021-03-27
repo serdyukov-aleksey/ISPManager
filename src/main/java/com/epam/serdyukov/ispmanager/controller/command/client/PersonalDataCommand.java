@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Comparator;
 import java.util.List;
 
@@ -26,26 +27,26 @@ public class PersonalDataCommand implements ICommand {
         HttpSession session = request.getSession();
         User fullUser = (User) session.getAttribute("fullUser");
 
-        IUserService userService = new UserServiceImpl();
+        IUserService userService =  UserServiceImpl.getInstance();
         ITariffService tariffService = new TariffServiceImpl();
-        IAccountService accountService = new AccountServiceImpl();
+        IAccountService accountService =  AccountServiceImpl.getInstance();
 
         String forward = Path.COMMAND_ACCOUNT;
 
         if (request.getParameterValues("arrTrafficsId") != null) {
             String[] trafficsId = request.getParameterValues("arrTrafficsId");
             userService.saveLinksUsersHasTariffs(fullUser, trafficsId);
-            double oldBalance = fullUser.getAccount().getBalance();
-            double result = 0;
+            BigDecimal oldBalance = fullUser.getAccount().getBalance();
+            BigDecimal result = BigDecimal.ZERO;
             List<Tariff> tariffs = tariffService.findAll();
             for (Tariff tariff : tariffs) {
                 for (String id : trafficsId) {
                     if (tariff.getId() == Long.parseLong(id)) {
-                        result = oldBalance - tariff.getPrice();
+                        result = oldBalance.subtract(BigDecimal.valueOf(tariff.getPrice()));
                     }
                 }
             }
-            if (!fullUser.isBlocked() && result < 0) {
+            if (!fullUser.isBlocked() && result.compareTo(BigDecimal.ZERO) < 0) {
                 fullUser.setBlocked(true);
                 userService.update(fullUser);
             }

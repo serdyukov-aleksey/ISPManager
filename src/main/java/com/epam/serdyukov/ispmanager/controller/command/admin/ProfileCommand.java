@@ -43,9 +43,9 @@ public class ProfileCommand implements ICommand {
     }
 
     private void show(HttpServletRequest request, long id) {
-        IUserService userService = new UserServiceImpl();
+        IUserService userService = UserServiceImpl.getInstance();
         IContactDetailsService detailsService = new ContactDetailsServiceImpl();
-        IAccountService accountService = new AccountServiceImpl();
+        IAccountService accountService = AccountServiceImpl.getInstance();
 
         User user = userService.find(id);
         user.setRoleId(user.getRoleId());

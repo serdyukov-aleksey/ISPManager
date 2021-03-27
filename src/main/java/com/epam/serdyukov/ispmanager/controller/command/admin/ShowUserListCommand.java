@@ -17,9 +17,9 @@ public class ShowUserListCommand implements ICommand {
   public String execute(HttpServletRequest request, HttpServletResponse response) {
     IPackageService IPackageService = new PackageServiceImpl();
     ITariffService ITariffService = new TariffServiceImpl();
-    IUserService IUserService = new UserServiceImpl();
+    IUserService IUserService = UserServiceImpl.getInstance();
     IContactDetailsService detailsService = new ContactDetailsServiceImpl();
-    IAccountService IAccountService = new AccountServiceImpl();
+    IAccountService IAccountService =  AccountServiceImpl.getInstance();
 
 
     List<User> users = IUserService.findAll();

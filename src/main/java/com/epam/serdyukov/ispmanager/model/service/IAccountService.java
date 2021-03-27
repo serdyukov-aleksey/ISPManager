@@ -1,7 +1,9 @@
 package com.epam.serdyukov.ispmanager.model.service;
 
 import com.epam.serdyukov.ispmanager.model.entity.Account;
+import com.epam.serdyukov.ispmanager.model.entity.User;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -22,4 +24,6 @@ public interface IAccountService {
     long getNumberContract();
 
     long getNextIdValue();
+
+    void topUp(User user, BigDecimal amount);
 }

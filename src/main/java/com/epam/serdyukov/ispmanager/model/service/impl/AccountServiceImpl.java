@@ -1,10 +1,16 @@
 package com.epam.serdyukov.ispmanager.model.service.impl;
 
 import com.epam.serdyukov.ispmanager.model.entity.Account;
+import com.epam.serdyukov.ispmanager.model.entity.Transaction;
+import com.epam.serdyukov.ispmanager.model.entity.User;
 import com.epam.serdyukov.ispmanager.model.repository.impl.AccountRepoImpl;
 import com.epam.serdyukov.ispmanager.model.repository.IAccountRepo;
 import com.epam.serdyukov.ispmanager.model.service.IAccountService;
+import com.epam.serdyukov.ispmanager.model.service.ITransactionService;
+import com.epam.serdyukov.ispmanager.model.service.IUserService;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -12,6 +18,15 @@ import java.util.List;
  */
 public class AccountServiceImpl implements IAccountService {
     private final IAccountRepo repo = new AccountRepoImpl();
+    private static IAccountService instance;
+
+    public static synchronized IAccountService getInstance() {
+        if (instance == null)
+            instance = new AccountServiceImpl();
+        return instance;
+    }
+
+    private AccountServiceImpl() {}
 
     @Override
     public List<Account> findAll() {
@@ -46,6 +61,28 @@ public class AccountServiceImpl implements IAccountService {
     @Override
     public long getNextIdValue() {
         return repo.getNextIdValue();
+    }
+
+    @Override
+    public void topUp(User user, BigDecimal amount) {
+        ITransactionService ts = TransactionServiceImpl.getInstance();
+        IUserService userService = UserServiceImpl.getInstance();
+        Transaction transaction = new Transaction();
+        transaction.setTimestamp(LocalDateTime.now());
+        transaction.setAccount(user.getAccount().getId());
+        transaction.setCredit(true);
+        transaction.setAmount(amount);
+        transaction.setDescription("Top up account");
+        ts.save(transaction);
+
+        Account account = user.getAccount();
+        account.setBalance(ts.calcTransactionsByAccount(account.getId()));
+        update(account);
+
+        if (user.isBlocked() && user.getAccount().getBalance().compareTo(BigDecimal.ZERO) > 0) {
+            user.setBlocked(false);
+            userService.update(user);
+        }
     }
 
 

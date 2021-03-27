@@ -15,24 +15,14 @@ import javax.servlet.http.HttpSession;
 import java.util.HashSet;
 
 public class UserProfileCommand implements ICommand {
+  private final IUserService userService = UserServiceImpl.getInstance();
 
   @Override
   public String execute(HttpServletRequest request, HttpServletResponse response) {
     HttpSession session = request.getSession();
     String forward = Path.PAGE_USER_PROFILE;
-    IUserService userService = new UserServiceImpl();
-    IContactDetailsService detailsService = new ContactDetailsServiceImpl();
-    IAccountService accountService = new AccountServiceImpl();
-    ITariffService tariffService = new TariffServiceImpl();
-
     User fullUser = (User) session.getAttribute("user");
-    fullUser.setRoleId(fullUser.getRoleId());
-    fullUser.setDetails(detailsService.find(fullUser.getDetails().getId()));
-    fullUser.setAccount(accountService.find(fullUser.getAccount().getId()));
-    fullUser.setTariffs(new HashSet<>(userService.findUserTariffs(fullUser)));
-
-    session.setAttribute("fullUser", fullUser);
-    request.setAttribute("fullUser", fullUser);
+    userService.updateFullUserToSession(request, session, fullUser);
     return forward;
   }
 }

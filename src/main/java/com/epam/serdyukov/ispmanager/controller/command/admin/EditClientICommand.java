@@ -24,9 +24,9 @@ public class EditClientICommand implements ICommand {
         long id = Long.parseLong(request.getParameter("user_id"));
         String forward = Path.COMMAND_SHOW_USERS;
 
-        IUserService userService = new UserServiceImpl();
+        IUserService userService =  UserServiceImpl.getInstance();
         IContactDetailsService detailsService = new ContactDetailsServiceImpl();
-        IAccountService accountService = new AccountServiceImpl();
+        IAccountService accountService = AccountServiceImpl.getInstance();
 
         User user;
         if (id != 0) {

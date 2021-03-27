@@ -22,9 +22,9 @@ public class MainCommand implements ICommand {
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         IPackageService IPackageService = new PackageServiceImpl();
         ITariffService ITariffService = new TariffServiceImpl();
-        IUserService IUserService = new UserServiceImpl();
+        IUserService IUserService =  UserServiceImpl.getInstance();
         IContactDetailsService detailsService = new ContactDetailsServiceImpl();
-        IAccountService IAccountService = new AccountServiceImpl();
+        IAccountService IAccountService = AccountServiceImpl.getInstance();
 
         List<PackageServices> services = IPackageService.findAll();
         List<Tariff> internetTariffs = ITariffService.findAllById(1);

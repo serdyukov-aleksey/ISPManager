@@ -28,9 +28,9 @@ public class PdfBuilderCommand implements ICommand {
             ReportBuilder.contractPDF(response, user);
         } else {
             long id = Long.parseLong(request.getParameter("user_id"));
-            IUserService userService = new UserServiceImpl();
+            IUserService userService =  UserServiceImpl.getInstance();
             IContactDetailsService detailsService = new ContactDetailsServiceImpl();
-            IAccountService accountService = new AccountServiceImpl();
+            IAccountService accountService =  AccountServiceImpl.getInstance();
 
             User fullUser = userService.find(id);
             fullUser.setRoleId(fullUser.getRoleId());
