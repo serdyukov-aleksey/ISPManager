@@ -1,5 +1,6 @@
 package com.epam.serdyukov.ispmanager.model.service;
 
+import com.epam.serdyukov.ispmanager.appcontext.AppContext;
 import com.epam.serdyukov.ispmanager.model.entity.ContactDetails;
 import com.epam.serdyukov.ispmanager.model.entity.User;
 import com.epam.serdyukov.ispmanager.model.repository.impl.UserRepoImpl;
@@ -14,7 +15,7 @@ import static org.junit.Assert.*;
 public class UserDetailsServiceImplTest {
 
   UserRepoImpl repo = new UserRepoImpl();
-  IContactDetailsService detailsService = new ContactDetailsServiceImpl();
+  IContactDetailsService detailsService = AppContext.getInstance().getDetailsService();
 
   @Test
   public void findAll() {

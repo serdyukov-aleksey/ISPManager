@@ -11,7 +11,11 @@ import java.util.List;
  * @author Aleksey Serdyukov
  */
 public class ContactDetailsServiceImpl implements IContactDetailsService {
-    private final IContactDetailsRepo repo = new ContactDetailsRepoImpl();
+    private final IContactDetailsRepo repo;
+
+    public ContactDetailsServiceImpl(IContactDetailsRepo repo){
+        this.repo=repo;
+    }
 
     @Override
     public List<ContactDetails> findAll() {

@@ -16,7 +16,7 @@ import java.util.List;
 public class EditServicesCommand implements ICommand {
   @Override
   public String execute(HttpServletRequest request, HttpServletResponse response) {
-    IPackageService IPackageService = new PackageServiceImpl();
+    IPackageService IPackageService = AppContext.getInstance().getPackageService();
     ITariffService ITariffService = AppContext.getInstance().getTariffService();
 
     List<PackageServices> services = IPackageService.findAll();

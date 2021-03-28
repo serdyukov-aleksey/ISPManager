@@ -30,7 +30,7 @@ public class PdfBuilderCommand implements ICommand {
         } else {
             long id = Long.parseLong(request.getParameter("user_id"));
             IUserService userService =  AppContext.getInstance().getUserService();
-            IContactDetailsService detailsService = new ContactDetailsServiceImpl();
+            IContactDetailsService detailsService = AppContext.getInstance().getDetailsService();
             IAccountService accountService =  AppContext.getInstance().getAccountService();
 
             User fullUser = userService.find(id);

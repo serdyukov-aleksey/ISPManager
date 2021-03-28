@@ -26,7 +26,7 @@ public class EditClientICommand implements ICommand {
         String forward = Path.COMMAND_SHOW_USERS;
 
         IUserService userService =  AppContext.getInstance().getUserService();
-        IContactDetailsService detailsService = new ContactDetailsServiceImpl();
+        IContactDetailsService detailsService = AppContext.getInstance().getDetailsService();
         IAccountService accountService = AppContext.getInstance().getAccountService();
 
         User user;

@@ -12,7 +12,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class TransactionServiceImplTest {
-  ITransactionService ts = TransactionServiceImpl.getInstance();
+  ITransactionService ts = AppContext.getInstance().getTransactionService();
   IUserService us =  AppContext.getInstance().getUserService();
   @Test
   public void calcTransactionsByAccount() {

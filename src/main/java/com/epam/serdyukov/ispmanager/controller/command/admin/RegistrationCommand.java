@@ -43,7 +43,7 @@ public class RegistrationCommand implements ICommand {
         String[] trafficsId = request.getParameterValues("arrTrafficsId");
 
         IUserService userService =  AppContext.getInstance().getUserService();
-        IContactDetailsService detailsService = new ContactDetailsServiceImpl();
+        IContactDetailsService detailsService = AppContext.getInstance().getDetailsService();
         IAccountService accountService =  AppContext.getInstance().getAccountService();
         ITariffService tariffService = AppContext.getInstance().getTariffService();
 

@@ -1,5 +1,6 @@
 package com.epam.serdyukov.ispmanager.controller.command.client;
 
+import com.epam.serdyukov.ispmanager.appcontext.AppContext;
 import com.epam.serdyukov.ispmanager.controller.Path;
 import com.epam.serdyukov.ispmanager.controller.command.ICommand;
 import com.epam.serdyukov.ispmanager.model.entity.Transaction;
@@ -18,7 +19,7 @@ public class TransactionCommand implements ICommand {
     HttpSession session = request.getSession();
     String forward = Path.PAGE_TRANSACTIONS;
     User fullUser = (User) session.getAttribute("user");
-    ITransactionService ts = TransactionServiceImpl.getInstance();
+    ITransactionService ts = AppContext.getInstance().getTransactionService();
     List<Transaction> transactions = ts.getAllByAccount(fullUser.getAccount().getId());
     session.setAttribute("transactions", transactions);
     request.setAttribute("transactions", transactions);

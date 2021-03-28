@@ -25,9 +25,9 @@ import java.util.Set;
  * @author Aleksey Serdyukov
  */
 public class AccountCommand implements ICommand {
-  private final ITransactionService transactionService = TransactionServiceImpl.getInstance();
+  private final ITransactionService transactionService = AppContext.getInstance().getTransactionService();
   private final IUserService userService =  AppContext.getInstance().getUserService();
-  private final IContactDetailsService detailsService = new ContactDetailsServiceImpl();
+  private final IContactDetailsService detailsService = AppContext.getInstance().getDetailsService();
   private final IAccountService accountService =  AppContext.getInstance().getAccountService();
   private final ITariffService tariffService = AppContext.getInstance().getTariffService();
 

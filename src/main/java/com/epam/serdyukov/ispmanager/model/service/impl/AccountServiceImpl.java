@@ -61,7 +61,7 @@ public class AccountServiceImpl implements IAccountService {
 
     @Override
     public void topUp(User user, BigDecimal amount) {
-        ITransactionService ts = TransactionServiceImpl.getInstance();
+        ITransactionService ts = AppContext.getInstance().getTransactionService();
         IUserService userService = AppContext.getInstance().getUserService();
         Transaction transaction = new Transaction();
         transaction.setTimestamp(LocalDateTime.now());

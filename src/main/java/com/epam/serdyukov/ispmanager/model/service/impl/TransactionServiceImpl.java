@@ -16,16 +16,11 @@ import java.util.List;
 import java.util.Set;
 
 public class TransactionServiceImpl implements ITransactionService {
-  ITransactionRepo repo = new TransactionRepoImpl();
+  private final ITransactionRepo repo;
 
-  private static ITransactionService instance;
-
-  public static synchronized ITransactionService getInstance() {
-    if (instance == null)
-      instance = new TransactionServiceImpl();
-    return instance;
+  public TransactionServiceImpl(ITransactionRepo repo){
+    this.repo=repo;
   }
-  private TransactionServiceImpl() {}
 
   @Override
   public BigDecimal calcTransactionsByAccount(long id) {

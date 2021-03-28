@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 
 public class SaveUserProfileCommand implements ICommand {
   private final IUserService userService = AppContext.getInstance().getUserService();
-  private final IContactDetailsService detailsService = new ContactDetailsServiceImpl();
+  private final IContactDetailsService detailsService = AppContext.getInstance().getDetailsService();
 
   @Override
   public String execute(HttpServletRequest request, HttpServletResponse response) {

@@ -16,10 +16,10 @@ import java.util.List;
 public class ShowUserListCommand implements ICommand {
   @Override
   public String execute(HttpServletRequest request, HttpServletResponse response) {
-    IPackageService IPackageService = new PackageServiceImpl();
+    IPackageService IPackageService = AppContext.getInstance().getPackageService();
     ITariffService ITariffService = AppContext.getInstance().getTariffService();
     IUserService IUserService = AppContext.getInstance().getUserService();
-    IContactDetailsService detailsService = new ContactDetailsServiceImpl();
+    IContactDetailsService detailsService = AppContext.getInstance().getDetailsService();
     IAccountService IAccountService = AppContext.getInstance().getAccountService();
 
 
