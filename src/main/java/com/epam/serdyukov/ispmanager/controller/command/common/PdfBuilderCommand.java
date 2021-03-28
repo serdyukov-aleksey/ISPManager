@@ -4,10 +4,7 @@ import com.epam.serdyukov.ispmanager.appcontext.AppContext;
 import com.epam.serdyukov.ispmanager.controller.Path;
 import com.epam.serdyukov.ispmanager.model.entity.User;
 import com.epam.serdyukov.ispmanager.model.service.*;
-import com.epam.serdyukov.ispmanager.model.service.impl.AccountServiceImpl;
-import com.epam.serdyukov.ispmanager.model.service.impl.ContactDetailsServiceImpl;
-import com.epam.serdyukov.ispmanager.model.service.impl.UserServiceImpl;
-import com.epam.serdyukov.ispmanager.utils.ReportBuilder;
+import com.epam.serdyukov.ispmanager.util.ReportBuilder;
 import com.epam.serdyukov.ispmanager.controller.command.ICommand;
 
 import javax.servlet.http.HttpServletRequest;

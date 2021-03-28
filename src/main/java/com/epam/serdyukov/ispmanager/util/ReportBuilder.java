@@ -1,4 +1,4 @@
-package com.epam.serdyukov.ispmanager.utils;
+package com.epam.serdyukov.ispmanager.util;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.BaseFont;

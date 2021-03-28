@@ -2,13 +2,11 @@ package com.epam.serdyukov.ispmanager.controller.command.client;
 
 import com.epam.serdyukov.ispmanager.appcontext.AppContext;
 import com.epam.serdyukov.ispmanager.controller.Path;
-import com.epam.serdyukov.ispmanager.model.entity.Account;
 import com.epam.serdyukov.ispmanager.model.entity.ContactDetails;
 import com.epam.serdyukov.ispmanager.model.entity.Tariff;
 import com.epam.serdyukov.ispmanager.model.entity.User;
 import com.epam.serdyukov.ispmanager.model.service.*;
-import com.epam.serdyukov.ispmanager.model.service.impl.*;
-import com.epam.serdyukov.ispmanager.utils.ReportBuilder;
+import com.epam.serdyukov.ispmanager.util.ReportBuilder;
 import com.epam.serdyukov.ispmanager.controller.command.ICommand;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +15,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
