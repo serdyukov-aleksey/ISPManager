@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="ispmanager@localhost" uuid="6a3c12cc-5db4-4bfc-a660-ab0c72df6d74">
+    <data-source source="LOCAL" name="ispmanager2@localhost" uuid="3281c36f-7794-4a40-81e9-8b98ae18e778">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/ispmanager</jdbc-url>
+      <jdbc-url>jdbc:postgresql://localhost:5432/ispmanager2</jdbc-url>
     </data-source>
   </component>
 </project>
