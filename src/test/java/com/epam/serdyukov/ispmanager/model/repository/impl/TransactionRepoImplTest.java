@@ -20,7 +20,6 @@ public class TransactionRepoImplTest {
 
   @Test
   public void getAll() {
-    List<Transaction> transactions = repo.getAllByAccount(2);
 
   }
 
@@ -30,13 +29,6 @@ public class TransactionRepoImplTest {
 
   @Test
   public void create() {
-    Transaction transaction = new Transaction();
-    transaction.setTimestamp(LocalDateTime.now());
-    transaction.setAccount(3);
-    transaction.setCredit(false);
-    transaction.setAmount(BigDecimal.valueOf(50));
-    transaction.setDescription("Test debit");
-    repo.create(transaction);
   }
 
   @Test

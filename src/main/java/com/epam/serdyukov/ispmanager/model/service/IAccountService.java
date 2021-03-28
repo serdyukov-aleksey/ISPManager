@@ -25,5 +25,4 @@ public interface IAccountService {
 
     long getNextIdValue();
 
-    void topUp(User user, BigDecimal amount);
 }

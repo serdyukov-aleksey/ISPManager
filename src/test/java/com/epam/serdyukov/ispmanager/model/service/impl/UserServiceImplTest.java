@@ -70,7 +70,6 @@ public class UserServiceImplTest {
     testUser.setAccount(account);
     testUser.setTariffs(tariffs);
 
-//    cut = UserServiceImpl.getInstance();
     MockitoAnnotations.initMocks(this);
   }
 

@@ -1,9 +1,7 @@
 package com.epam.serdyukov.ispmanager.model.service.impl;
 
-import com.epam.serdyukov.ispmanager.model.entity.PackageServices;
-import com.epam.serdyukov.ispmanager.model.repository.IContactDetailsRepo;
+import com.epam.serdyukov.ispmanager.model.entity.PackageService;
 import com.epam.serdyukov.ispmanager.model.repository.IServiceRepo;
-import com.epam.serdyukov.ispmanager.model.repository.impl.ServiceRepoImpl;
 import com.epam.serdyukov.ispmanager.model.service.IPackageService;
 
 import java.util.List;
@@ -18,22 +16,22 @@ public class PackageServiceImpl implements IPackageService {
         this.repo=repo;
     }
     @Override
-    public List<PackageServices> findAll() {
+    public List<PackageService> findAll() {
         return this.repo.getAll();
     }
 
     @Override
-    public PackageServices find(long id) {
+    public PackageService find(long id) {
         return this.repo.getById(id);
     }
 
     @Override
-    public void save(PackageServices service) {
+    public void save(PackageService service) {
         this.repo.create(service);
     }
 
     @Override
-    public void update(PackageServices service) {
+    public void update(PackageService service) {
         this.repo.update(service);
     }
 

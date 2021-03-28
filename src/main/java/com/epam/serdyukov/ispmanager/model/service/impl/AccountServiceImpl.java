@@ -59,27 +59,7 @@ public class AccountServiceImpl implements IAccountService {
         return repo.getNextIdValue();
     }
 
-    @Override
-    public void topUp(User user, BigDecimal amount) {
-        ITransactionService ts = AppContext.getInstance().getTransactionService();
-        IUserService userService = AppContext.getInstance().getUserService();
-        Transaction transaction = new Transaction();
-        transaction.setTimestamp(LocalDateTime.now());
-        transaction.setAccount(user.getAccount().getId());
-        transaction.setCredit(true);
-        transaction.setAmount(amount);
-        transaction.setDescription("Top up account");
-        ts.save(transaction);
 
-        Account account = user.getAccount();
-        account.setBalance(ts.calcTransactionsByAccount(account.getId()));
-        update(account);
-
-        if (user.isBlocked() && user.getAccount().getBalance().compareTo(BigDecimal.ZERO) > 0) {
-            user.setBlocked(false);
-            userService.update(user);
-        }
-    }
 
 
 }

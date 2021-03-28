@@ -1,6 +1,6 @@
 package com.epam.serdyukov.ispmanager.model.builder;
 
-import com.epam.serdyukov.ispmanager.model.entity.PackageServices;
+import com.epam.serdyukov.ispmanager.model.entity.PackageService;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,23 +10,23 @@ import java.util.List;
 /**
  * @author Aleksey Serdyukov
  */
-public class ServiceQueryBuilder extends QueryBuilder<PackageServices> {
+public class ServiceQueryBuilder extends QueryBuilder<PackageService> {
     @Override
-    public List<PackageServices> getListOfResult(ResultSet rs) throws SQLException {
-        List<PackageServices> services = new ArrayList<>();
+    public List<PackageService> getListOfResult(ResultSet rs) throws SQLException {
+        List<PackageService> services = new ArrayList<>();
         while (rs.next()) {
-            PackageServices packageServices = new PackageServices();
-            packageServices.setId(rs.getLong("id"));
-            packageServices.setName(rs.getString("name"));
-            packageServices.setDescription(rs.getString("description"));
-            services.add(packageServices);
+            PackageService packageService = new PackageService();
+            packageService.setId(rs.getLong("id"));
+            packageService.setName(rs.getString("name"));
+            packageService.setDescription(rs.getString("description"));
+            services.add(packageService);
         }
         return services;
     }
 
     @Override
-    public PackageServices getResult(ResultSet rs) throws SQLException {
-        PackageServices packageService = new PackageServices();
+    public PackageService getResult(ResultSet rs) throws SQLException {
+        PackageService packageService = new PackageService();
         while (rs.next()) {
             packageService.setId(rs.getLong("id"));
             packageService.setName(rs.getString("name"));

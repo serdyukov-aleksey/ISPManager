@@ -24,7 +24,6 @@ public class UserQueryBuilder extends QueryBuilder<User> {
     return users;
   }
 
-
   @Override
   public User getResult(ResultSet rs) throws SQLException {
     User user = new User();

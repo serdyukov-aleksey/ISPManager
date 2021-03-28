@@ -1,6 +1,7 @@
 package com.epam.serdyukov.ispmanager.model.service.impl;
 
 import com.epam.serdyukov.ispmanager.appcontext.AppContext;
+import com.epam.serdyukov.ispmanager.model.entity.Account;
 import com.epam.serdyukov.ispmanager.model.entity.Tariff;
 import com.epam.serdyukov.ispmanager.model.entity.Transaction;
 import com.epam.serdyukov.ispmanager.model.entity.User;
@@ -17,9 +18,14 @@ import java.util.Set;
 
 public class TransactionServiceImpl implements ITransactionService {
   private final ITransactionRepo repo;
+  private final IAccountService accountService;
+  private final IUserService userService;
 
-  public TransactionServiceImpl(ITransactionRepo repo){
+  public TransactionServiceImpl(ITransactionRepo repo, IAccountService accountService,
+                                IUserService userService){
     this.repo=repo;
+    this.accountService=accountService;
+    this.userService=userService;
   }
 
   @Override
@@ -48,10 +54,29 @@ public class TransactionServiceImpl implements ITransactionService {
 
   @Override
   public void saveDailyDebtsByAllUsers() {
-    IUserService userService = AppContext.getInstance().getUserService();
     List<User> users = userService.findAllFullInfo();
     for (User user: users){
       saveDailyDebtsByUser(user);
+    }
+  }
+
+  @Override
+  public void topUp(User user, BigDecimal amount) {
+    Transaction transaction = new Transaction();
+    transaction.setTimestamp(LocalDateTime.now());
+    transaction.setAccount(user.getAccount().getId());
+    transaction.setCredit(true);
+    transaction.setAmount(amount);
+    transaction.setDescription("Top up account");
+    save(transaction);
+
+    Account account = user.getAccount();
+    account.setBalance(calcTransactionsByAccount(account.getId()));
+    accountService.update(account);
+
+    if (user.isBlocked() && user.getAccount().getBalance().compareTo(BigDecimal.ZERO) > 0) {
+      user.setBlocked(false);
+      userService.update(user);
     }
   }
 

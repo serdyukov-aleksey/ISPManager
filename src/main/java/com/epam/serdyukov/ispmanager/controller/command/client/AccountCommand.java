@@ -88,7 +88,7 @@ public class AccountCommand implements ICommand {
     User fullUser = (User) session.getAttribute("user");
 
     BigDecimal amount = BigDecimal.valueOf(Long.parseLong(request.getParameter("amount")));
-    accountService.topUp(fullUser, amount);
+    transactionService.topUp(fullUser, amount);
 
     try {
       response.sendRedirect(resp);

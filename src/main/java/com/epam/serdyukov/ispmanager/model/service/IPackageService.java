@@ -1,6 +1,6 @@
 package com.epam.serdyukov.ispmanager.model.service;
 
-import com.epam.serdyukov.ispmanager.model.entity.PackageServices;
+import com.epam.serdyukov.ispmanager.model.entity.PackageService;
 
 import java.util.List;
 
@@ -9,13 +9,13 @@ import java.util.List;
  */
 public interface IPackageService {
 
-    List<PackageServices> findAll();
+    List<PackageService> findAll();
 
-    PackageServices find(long id);
+    PackageService find(long id);
 
-    void save(PackageServices service);
+    void save(PackageService service);
 
-    void update(PackageServices service);
+    void update(PackageService service);
 
     void remove(long id);
 }

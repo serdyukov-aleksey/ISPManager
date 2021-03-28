@@ -2,12 +2,10 @@ package com.epam.serdyukov.ispmanager.controller.command.admin;
 
 import com.epam.serdyukov.ispmanager.appcontext.AppContext;
 import com.epam.serdyukov.ispmanager.controller.Path;
-import com.epam.serdyukov.ispmanager.model.entity.PackageServices;
+import com.epam.serdyukov.ispmanager.model.entity.PackageService;
 import com.epam.serdyukov.ispmanager.model.entity.Tariff;
 import com.epam.serdyukov.ispmanager.model.service.*;
 import com.epam.serdyukov.ispmanager.controller.command.ICommand;
-import com.epam.serdyukov.ispmanager.model.service.impl.PackageServiceImpl;
-import com.epam.serdyukov.ispmanager.model.service.impl.TariffServiceImpl;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,7 +17,7 @@ public class EditServicesCommand implements ICommand {
     IPackageService IPackageService = AppContext.getInstance().getPackageService();
     ITariffService ITariffService = AppContext.getInstance().getTariffService();
 
-    List<PackageServices> services = IPackageService.findAll();
+    List<PackageService> services = IPackageService.findAll();
     List<Tariff> internetTariffs = ITariffService.findAllById(1);
     List<Tariff> iptvTariffs = ITariffService.findAllById(2);
     List<Tariff> telephonyTariffs = ITariffService.findAllById(3);

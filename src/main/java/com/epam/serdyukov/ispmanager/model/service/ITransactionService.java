@@ -16,4 +16,6 @@ public interface ITransactionService {
   void save(Transaction transaction);
 
   List<Transaction> getAllByAccount (long id);
+
+  void topUp(User user, BigDecimal amount);
 }

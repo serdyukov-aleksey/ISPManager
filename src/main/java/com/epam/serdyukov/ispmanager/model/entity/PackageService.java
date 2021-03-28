@@ -3,13 +3,13 @@ package com.epam.serdyukov.ispmanager.model.entity;
 import java.util.HashSet;
 import java.util.Set;
 
-public class PackageServices extends Entity {
+public class PackageService extends Entity {
     private static final long serialVersionUID = 1L;
     private String name;
     private String description;
     private Set<Tariff> tariffs;
 
-    public PackageServices() {
+    public PackageService() {
         this.tariffs = new HashSet<>();
     }
 

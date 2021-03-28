@@ -1,14 +1,10 @@
 package com.epam.serdyukov.ispmanager.model.service.impl;
 
-import com.epam.serdyukov.ispmanager.model.connectionpool.DBManager;
-import com.epam.serdyukov.ispmanager.model.entity.PackageServices;
 import com.epam.serdyukov.ispmanager.model.entity.Tariff;
 import com.epam.serdyukov.ispmanager.model.entity.User;
 import com.epam.serdyukov.ispmanager.model.repository.IUserRepo;
-import com.epam.serdyukov.ispmanager.model.repository.impl.UserRepoImpl;
 import com.epam.serdyukov.ispmanager.model.service.*;
 
-import javax.jws.soap.SOAPBinding;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;

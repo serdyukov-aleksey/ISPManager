@@ -6,13 +6,15 @@
 <c:set var="title" value="Страница входа" scope="page"/>
 <jsp:include page="/WEB-INF/templates/_head.jsp"></jsp:include>
 <body>
-<%--<jsp:include page="/WEB-INF/templates/_menu.jsp"></jsp:include>--%>
-<div class="container">
-    <div class="row  mt-5">
-        <div class="col">
-            <div class="d-flex justify-content-center">
-                <img src="https://static.cdn.epam.com/uploads/690afa39a93c88c4dd13758fe1d869d5/EPM-UUI/error-pages/error-404-dark.svg">
-            </div>
+<div class="page-container-responsive">
+    <div class="row space-top-8 space-8">
+        <div class="col-md-5 col-middle">
+            <h1 class="text-jumbo text-ginormous hide-sm">Ой!</h1>
+            <h2>Похоже, произошла какая-то ошибка.</h2>
+            <h6>Вернитесь на <a href="controller?action=login">Главную</a></h6>
+        </div>
+        <div class="col-md-5 col-middle text-center">
+            <img src="https://a0.muscache.com/airbnb/static/error_pages/404-Airbnb_final-d652ff855b1335dd3eedc3baa8dc8b69.gif" width="313" height="428" class="hide-sm" alt="Девочка уронила свое мороженое.">
         </div>
     </div>
 </div>

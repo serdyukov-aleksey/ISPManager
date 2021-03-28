@@ -2,12 +2,11 @@ package com.epam.serdyukov.ispmanager.controller.command.admin;
 
 import com.epam.serdyukov.ispmanager.appcontext.AppContext;
 import com.epam.serdyukov.ispmanager.controller.Path;
-import com.epam.serdyukov.ispmanager.model.entity.PackageServices;
+import com.epam.serdyukov.ispmanager.model.entity.PackageService;
 import com.epam.serdyukov.ispmanager.model.entity.Tariff;
 import com.epam.serdyukov.ispmanager.model.entity.User;
 import com.epam.serdyukov.ispmanager.model.service.*;
 import com.epam.serdyukov.ispmanager.controller.command.ICommand;
-import com.epam.serdyukov.ispmanager.model.service.impl.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,7 +26,7 @@ public class MainCommand implements ICommand {
         IContactDetailsService detailsService = AppContext.getInstance().getDetailsService();
         IAccountService IAccountService = AppContext.getInstance().getAccountService();
 
-        List<PackageServices> services = IPackageService.findAll();
+        List<PackageService> services = IPackageService.findAll();
         List<Tariff> internetTariffs = ITariffService.findAllById(1);
         List<Tariff> iptvTariffs = ITariffService.findAllById(2);
         List<Tariff> telephonyTariffs = ITariffService.findAllById(3);

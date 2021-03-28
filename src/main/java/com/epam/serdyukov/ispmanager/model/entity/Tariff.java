@@ -12,6 +12,15 @@ public class Tariff extends Entity {
     private double price;
     private long serviceId;
 
+    public Tariff(){}
+
+    public Tariff(String name, String description, double price, long serviceId) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.serviceId = serviceId;
+    }
+
     public String getName() {
         return name;
     }

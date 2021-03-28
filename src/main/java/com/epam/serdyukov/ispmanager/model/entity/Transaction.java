@@ -12,6 +12,15 @@ public class Transaction extends Entity{
   private boolean isCredit;
   private String description;
 
+  public Transaction(LocalDateTime timestamp, long account, BigDecimal amount, boolean isCredit, String description) {
+    this.timestamp = timestamp;
+    this.account = account;
+    this.amount = amount;
+    this.isCredit = isCredit;
+    this.description = description;
+  }
+  public Transaction(){}
+
   public LocalDateTime getTimestamp() {
     return timestamp;
   }
