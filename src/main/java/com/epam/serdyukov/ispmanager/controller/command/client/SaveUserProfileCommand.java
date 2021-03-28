@@ -27,8 +27,6 @@ public class SaveUserProfileCommand implements ICommand {
     String firstName = request.getParameter("firstName").trim();
     String lastName = request.getParameter("lastName").trim();
     String surname = request.getParameter("surname").trim();
-    String login = request.getParameter("login").trim();
-    String password = request.getParameter("password").trim();
 
     String city = request.getParameter("city").trim();
     String street = request.getParameter("street").trim();
@@ -46,8 +44,8 @@ public class SaveUserProfileCommand implements ICommand {
     details.setEmail(email);
     details.setPhone(phone);
 
-    fullUser.setLogin(login);
-    if(!password.equals("")) {
+    if(!request.getParameter("password").trim().equals("")) {
+      String password = request.getParameter("password").trim();
       fullUser.setPassword(BCrypt.hashpw(password, BCrypt.gensalt()));
     }
     fullUser.setSurname(surname);
