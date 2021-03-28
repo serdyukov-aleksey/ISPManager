@@ -1,5 +1,6 @@
 package com.epam.serdyukov.ispmanager.model.service.impl;
 
+import com.epam.serdyukov.ispmanager.appcontext.AppContext;
 import com.epam.serdyukov.ispmanager.model.entity.User;
 import com.epam.serdyukov.ispmanager.model.service.ITransactionService;
 import com.epam.serdyukov.ispmanager.model.service.IUserService;
@@ -12,7 +13,7 @@ import static org.junit.Assert.*;
 
 public class TransactionServiceImplTest {
   ITransactionService ts = TransactionServiceImpl.getInstance();
-  IUserService us =  UserServiceImpl.getInstance();
+  IUserService us =  AppContext.getInstance().getUserService();
   @Test
   public void calcTransactionsByAccount() {
     BigDecimal res = ts.calcTransactionsByAccount(2);

@@ -1,5 +1,6 @@
 package com.epam.serdyukov.ispmanager.controller.command.admin;
 
+import com.epam.serdyukov.ispmanager.appcontext.AppContext;
 import com.epam.serdyukov.ispmanager.controller.Path;
 import com.epam.serdyukov.ispmanager.model.entity.*;
 import com.epam.serdyukov.ispmanager.model.service.*;
@@ -41,10 +42,10 @@ public class RegistrationCommand implements ICommand {
 
         String[] trafficsId = request.getParameterValues("arrTrafficsId");
 
-        IUserService userService =  UserServiceImpl.getInstance();
+        IUserService userService =  AppContext.getInstance().getUserService();
         IContactDetailsService detailsService = new ContactDetailsServiceImpl();
-        IAccountService accountService =  AccountServiceImpl.getInstance();
-        ITariffService tariffService = new TariffServiceImpl();
+        IAccountService accountService =  AppContext.getInstance().getAccountService();
+        ITariffService tariffService = AppContext.getInstance().getTariffService();
 
         ContactDetails details = new ContactDetails();
         details.setId(detailsService.getNextIdValue());

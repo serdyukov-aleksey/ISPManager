@@ -1,5 +1,6 @@
 package com.epam.serdyukov.ispmanager.controller.command.client;
 
+import com.epam.serdyukov.ispmanager.appcontext.AppContext;
 import com.epam.serdyukov.ispmanager.controller.Path;
 import com.epam.serdyukov.ispmanager.controller.command.ICommand;
 import com.epam.serdyukov.ispmanager.model.entity.ContactDetails;
@@ -15,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class SaveUserProfileCommand implements ICommand {
-  private final IUserService userService = UserServiceImpl.getInstance();
+  private final IUserService userService = AppContext.getInstance().getUserService();
   private final IContactDetailsService detailsService = new ContactDetailsServiceImpl();
 
   @Override

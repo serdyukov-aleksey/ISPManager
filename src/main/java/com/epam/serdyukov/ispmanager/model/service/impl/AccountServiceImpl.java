@@ -1,5 +1,6 @@
 package com.epam.serdyukov.ispmanager.model.service.impl;
 
+import com.epam.serdyukov.ispmanager.appcontext.AppContext;
 import com.epam.serdyukov.ispmanager.model.entity.Account;
 import com.epam.serdyukov.ispmanager.model.entity.Transaction;
 import com.epam.serdyukov.ispmanager.model.entity.User;
@@ -17,16 +18,11 @@ import java.util.List;
  * @author Aleksey Serdyukov
  */
 public class AccountServiceImpl implements IAccountService {
-    private final IAccountRepo repo = new AccountRepoImpl();
-    private static IAccountService instance;
+    private final IAccountRepo repo;
 
-    public static synchronized IAccountService getInstance() {
-        if (instance == null)
-            instance = new AccountServiceImpl();
-        return instance;
+    public AccountServiceImpl(IAccountRepo repo) {
+        this.repo = repo;
     }
-
-    private AccountServiceImpl() {}
 
     @Override
     public List<Account> findAll() {
@@ -66,7 +62,7 @@ public class AccountServiceImpl implements IAccountService {
     @Override
     public void topUp(User user, BigDecimal amount) {
         ITransactionService ts = TransactionServiceImpl.getInstance();
-        IUserService userService = UserServiceImpl.getInstance();
+        IUserService userService = AppContext.getInstance().getUserService();
         Transaction transaction = new Transaction();
         transaction.setTimestamp(LocalDateTime.now());
         transaction.setAccount(user.getAccount().getId());

@@ -1,5 +1,6 @@
 package com.epam.serdyukov.ispmanager.controller.command.outofcontrol;
 
+import com.epam.serdyukov.ispmanager.appcontext.AppContext;
 import com.epam.serdyukov.ispmanager.controller.Path;
 import com.epam.serdyukov.ispmanager.model.entity.Role;
 import com.epam.serdyukov.ispmanager.model.entity.User;
@@ -33,7 +34,7 @@ public class LoginCommand implements ICommand {
             return forward;
         }
 
-        IUserService service =  UserServiceImpl.getInstance();
+        IUserService service =  AppContext.getInstance().getUserService();
         User user = service.findByLogin(login);
 
         if (user == null || !BCrypt.checkpw(password, user.getPassword())) {

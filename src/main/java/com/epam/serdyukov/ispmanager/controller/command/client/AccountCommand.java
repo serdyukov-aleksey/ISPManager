@@ -1,5 +1,6 @@
 package com.epam.serdyukov.ispmanager.controller.command.client;
 
+import com.epam.serdyukov.ispmanager.appcontext.AppContext;
 import com.epam.serdyukov.ispmanager.controller.Path;
 import com.epam.serdyukov.ispmanager.model.entity.Account;
 import com.epam.serdyukov.ispmanager.model.entity.ContactDetails;
@@ -25,10 +26,10 @@ import java.util.Set;
  */
 public class AccountCommand implements ICommand {
   private final ITransactionService transactionService = TransactionServiceImpl.getInstance();
-  private final IUserService userService =  UserServiceImpl.getInstance();
+  private final IUserService userService =  AppContext.getInstance().getUserService();
   private final IContactDetailsService detailsService = new ContactDetailsServiceImpl();
-  private final IAccountService accountService =  AccountServiceImpl.getInstance();
-  private final ITariffService tariffService = new TariffServiceImpl();
+  private final IAccountService accountService =  AppContext.getInstance().getAccountService();
+  private final ITariffService tariffService = AppContext.getInstance().getTariffService();
 
   @Override
   public String execute(HttpServletRequest request, HttpServletResponse response) {

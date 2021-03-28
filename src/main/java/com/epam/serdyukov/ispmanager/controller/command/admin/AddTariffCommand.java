@@ -1,5 +1,6 @@
 package com.epam.serdyukov.ispmanager.controller.command.admin;
 
+import com.epam.serdyukov.ispmanager.appcontext.AppContext;
 import com.epam.serdyukov.ispmanager.controller.Path;
 import com.epam.serdyukov.ispmanager.model.entity.Tariff;
 import com.epam.serdyukov.ispmanager.model.service.ITariffService;
@@ -23,7 +24,7 @@ public class AddTariffCommand implements ICommand {
 
         String resp = Path.COMMAND_SHOW_SERVICES;
 
-        ITariffService service = new TariffServiceImpl();
+        ITariffService service = AppContext.getInstance().getTariffService();
         Tariff tariff = new Tariff();
         tariff.setName(name);
         tariff.setPrice(Double.parseDouble(price));

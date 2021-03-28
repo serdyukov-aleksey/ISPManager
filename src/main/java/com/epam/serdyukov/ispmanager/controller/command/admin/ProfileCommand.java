@@ -1,5 +1,6 @@
 package com.epam.serdyukov.ispmanager.controller.command.admin;
 
+import com.epam.serdyukov.ispmanager.appcontext.AppContext;
 import com.epam.serdyukov.ispmanager.controller.Path;
 import com.epam.serdyukov.ispmanager.model.entity.User;
 import com.epam.serdyukov.ispmanager.model.service.*;
@@ -43,9 +44,9 @@ public class ProfileCommand implements ICommand {
     }
 
     private void show(HttpServletRequest request, long id) {
-        IUserService userService = UserServiceImpl.getInstance();
+        IUserService userService = AppContext.getInstance().getUserService();
         IContactDetailsService detailsService = new ContactDetailsServiceImpl();
-        IAccountService accountService = AccountServiceImpl.getInstance();
+        IAccountService accountService = AppContext.getInstance().getAccountService();
 
         User user = userService.find(id);
         user.setRoleId(user.getRoleId());

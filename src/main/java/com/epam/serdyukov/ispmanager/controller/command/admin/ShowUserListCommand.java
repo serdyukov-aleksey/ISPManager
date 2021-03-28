@@ -1,5 +1,6 @@
 package com.epam.serdyukov.ispmanager.controller.command.admin;
 
+import com.epam.serdyukov.ispmanager.appcontext.AppContext;
 import com.epam.serdyukov.ispmanager.controller.Path;
 import com.epam.serdyukov.ispmanager.model.entity.User;
 import com.epam.serdyukov.ispmanager.model.service.*;
@@ -16,10 +17,10 @@ public class ShowUserListCommand implements ICommand {
   @Override
   public String execute(HttpServletRequest request, HttpServletResponse response) {
     IPackageService IPackageService = new PackageServiceImpl();
-    ITariffService ITariffService = new TariffServiceImpl();
-    IUserService IUserService = UserServiceImpl.getInstance();
+    ITariffService ITariffService = AppContext.getInstance().getTariffService();
+    IUserService IUserService = AppContext.getInstance().getUserService();
     IContactDetailsService detailsService = new ContactDetailsServiceImpl();
-    IAccountService IAccountService =  AccountServiceImpl.getInstance();
+    IAccountService IAccountService = AppContext.getInstance().getAccountService();
 
 
     List<User> users = IUserService.findAll();

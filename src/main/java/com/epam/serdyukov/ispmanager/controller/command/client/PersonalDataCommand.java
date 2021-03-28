@@ -1,5 +1,6 @@
 package com.epam.serdyukov.ispmanager.controller.command.client;
 
+import com.epam.serdyukov.ispmanager.appcontext.AppContext;
 import com.epam.serdyukov.ispmanager.controller.Path;
 import com.epam.serdyukov.ispmanager.model.entity.Account;
 import com.epam.serdyukov.ispmanager.model.entity.Tariff;
@@ -27,8 +28,8 @@ public class PersonalDataCommand implements ICommand {
         HttpSession session = request.getSession();
         User fullUser = (User) session.getAttribute("fullUser");
 
-        IUserService userService =  UserServiceImpl.getInstance();
-        ITariffService tariffService = new TariffServiceImpl();
+        IUserService userService =  AppContext.getInstance().getUserService();
+        ITariffService tariffService = AppContext.getInstance().getTariffService();
 
         String forward = Path.COMMAND_ACCOUNT;
 

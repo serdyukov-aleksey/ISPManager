@@ -11,7 +11,11 @@ import java.util.List;
  * @author Aleksey Serdyukov
  */
 public class TariffServiceImpl implements ITariffService {
-    private final ITariffRepo repo = new TariffRepoImpl();
+    private final ITariffRepo repo;
+
+    public TariffServiceImpl(ITariffRepo repo){
+        this.repo = repo;
+    }
 
     @Override
     public List<Tariff> findAll() {

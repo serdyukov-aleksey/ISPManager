@@ -20,17 +20,17 @@ import java.util.List;
  */
 public class UserServiceImpl implements IUserService {
 
-  private final IUserRepo repo = new UserRepoImpl();
-  private final IContactDetailsService detailsService = new ContactDetailsServiceImpl();
-  private final IAccountService accountService = AccountServiceImpl.getInstance();
-  private static IUserService instance;
-  public static synchronized IUserService getInstance() {
-    if (instance == null)
-      instance = new UserServiceImpl();
-    return instance;
-  }
+  private final IUserRepo repo;
+  private final IContactDetailsService detailsService;
+  private final IAccountService accountService;
 
-  private UserServiceImpl() {}
+  public UserServiceImpl(IUserRepo repo, IContactDetailsService detailsService,
+                         IAccountService accountService) {
+    this.repo = repo;
+    this.detailsService = detailsService;
+    this.accountService = accountService;
+
+  }
 
 
   @Override

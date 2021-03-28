@@ -1,5 +1,6 @@
 package com.epam.serdyukov.ispmanager.controller.command.common;
 
+import com.epam.serdyukov.ispmanager.appcontext.AppContext;
 import com.epam.serdyukov.ispmanager.controller.Path;
 import com.epam.serdyukov.ispmanager.model.entity.User;
 import com.epam.serdyukov.ispmanager.model.service.*;
@@ -28,9 +29,9 @@ public class PdfBuilderCommand implements ICommand {
             ReportBuilder.contractPDF(response, user);
         } else {
             long id = Long.parseLong(request.getParameter("user_id"));
-            IUserService userService =  UserServiceImpl.getInstance();
+            IUserService userService =  AppContext.getInstance().getUserService();
             IContactDetailsService detailsService = new ContactDetailsServiceImpl();
-            IAccountService accountService =  AccountServiceImpl.getInstance();
+            IAccountService accountService =  AppContext.getInstance().getAccountService();
 
             User fullUser = userService.find(id);
             fullUser.setRoleId(fullUser.getRoleId());

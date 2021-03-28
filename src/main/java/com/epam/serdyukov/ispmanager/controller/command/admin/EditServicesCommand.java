@@ -1,5 +1,6 @@
 package com.epam.serdyukov.ispmanager.controller.command.admin;
 
+import com.epam.serdyukov.ispmanager.appcontext.AppContext;
 import com.epam.serdyukov.ispmanager.controller.Path;
 import com.epam.serdyukov.ispmanager.model.entity.PackageServices;
 import com.epam.serdyukov.ispmanager.model.entity.Tariff;
@@ -16,7 +17,7 @@ public class EditServicesCommand implements ICommand {
   @Override
   public String execute(HttpServletRequest request, HttpServletResponse response) {
     IPackageService IPackageService = new PackageServiceImpl();
-    ITariffService ITariffService = new TariffServiceImpl();
+    ITariffService ITariffService = AppContext.getInstance().getTariffService();
 
     List<PackageServices> services = IPackageService.findAll();
     List<Tariff> internetTariffs = ITariffService.findAllById(1);

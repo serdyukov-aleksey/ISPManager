@@ -1,5 +1,6 @@
 package com.epam.serdyukov.ispmanager.model.service.impl;
 
+import com.epam.serdyukov.ispmanager.appcontext.AppContext;
 import com.epam.serdyukov.ispmanager.model.entity.Tariff;
 import com.epam.serdyukov.ispmanager.model.entity.Transaction;
 import com.epam.serdyukov.ispmanager.model.entity.User;
@@ -52,7 +53,7 @@ public class TransactionServiceImpl implements ITransactionService {
 
   @Override
   public void saveDailyDebtsByAllUsers() {
-    IUserService userService = UserServiceImpl.getInstance();
+    IUserService userService = AppContext.getInstance().getUserService();
     List<User> users = userService.findAllFullInfo();
     for (User user: users){
       saveDailyDebtsByUser(user);

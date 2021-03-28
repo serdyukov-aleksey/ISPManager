@@ -1,5 +1,6 @@
 package com.epam.serdyukov.ispmanager.controller.command.admin;
 
+import com.epam.serdyukov.ispmanager.appcontext.AppContext;
 import com.epam.serdyukov.ispmanager.controller.Path;
 import com.epam.serdyukov.ispmanager.model.entity.User;
 import com.epam.serdyukov.ispmanager.model.service.*;
@@ -24,9 +25,9 @@ public class EditClientICommand implements ICommand {
         long id = Long.parseLong(request.getParameter("user_id"));
         String forward = Path.COMMAND_SHOW_USERS;
 
-        IUserService userService =  UserServiceImpl.getInstance();
+        IUserService userService =  AppContext.getInstance().getUserService();
         IContactDetailsService detailsService = new ContactDetailsServiceImpl();
-        IAccountService accountService = AccountServiceImpl.getInstance();
+        IAccountService accountService = AppContext.getInstance().getAccountService();
 
         User user;
         if (id != 0) {
