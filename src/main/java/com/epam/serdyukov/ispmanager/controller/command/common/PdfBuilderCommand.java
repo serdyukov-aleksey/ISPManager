@@ -26,7 +26,7 @@ public class PdfBuilderCommand implements ICommand {
     if (session.getAttribute("newUser") != null) {
       User user = (User) session.getAttribute("newUser");
 
-      ReportBuilder.contractPDF(response, user);
+      ReportBuilder.contractPdf(response, user);
     } else {
       long id = Long.parseLong(request.getParameter("user_id"));
       IUserService userService = AppContext.getInstance().getUserService();
@@ -40,7 +40,7 @@ public class PdfBuilderCommand implements ICommand {
       fullUser.setTariffs(new HashSet<>(userService.findUserTariffs(fullUser)));
       request.setAttribute("fullUser", fullUser);
 
-      ReportBuilder.contractPDF(response, fullUser);
+      ReportBuilder.contractPdf(response, fullUser);
     }
     return forward;
   }

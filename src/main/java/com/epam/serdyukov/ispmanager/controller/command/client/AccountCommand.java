@@ -6,7 +6,6 @@ import com.epam.serdyukov.ispmanager.controller.command.ICommand;
 import com.epam.serdyukov.ispmanager.model.entity.Tariff;
 import com.epam.serdyukov.ispmanager.model.entity.User;
 import com.epam.serdyukov.ispmanager.model.service.IAccountService;
-import com.epam.serdyukov.ispmanager.model.service.IContactDetailsService;
 import com.epam.serdyukov.ispmanager.model.service.ITariffService;
 import com.epam.serdyukov.ispmanager.model.service.ITransactionService;
 import com.epam.serdyukov.ispmanager.model.service.IUserService;
@@ -70,7 +69,7 @@ public class AccountCommand implements ICommand {
     Set<Tariff> tariffs = user.getTariffs();
     for (Tariff tariff : tariffs) {
       if (tariff.getId() == tariffId) {
-        ReportBuilder.tariffPDF(response, tariff);
+        ReportBuilder.tariffPdf(response, tariff);
       }
     }
   }

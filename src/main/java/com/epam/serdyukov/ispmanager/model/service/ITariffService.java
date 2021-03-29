@@ -1,25 +1,26 @@
 package com.epam.serdyukov.ispmanager.model.service;
 
 import com.epam.serdyukov.ispmanager.model.entity.Tariff;
-
 import java.util.List;
 
 /**
- * @author Aleksey Serdyukov
+ * Tariff service interface .
+ *
+ * @author Aleksey Serdyukov.
  */
 public interface ITariffService {
 
-    List<Tariff> findAll();
+  List<Tariff> findAll();
 
-    List<Tariff> findAllById(long id);
+  List<Tariff> findAllById(long id);
 
-    Tariff find(long id);
+  Tariff find(long id);
 
-    Tariff find(String name);
+  Tariff find(String name);
 
-    void save(Tariff tariff);
+  void save(Tariff tariff);
 
-    void update(Tariff tariff);
+  void update(Tariff tariff);
 
-    void remove(long id);
+  void remove(long id);
 }

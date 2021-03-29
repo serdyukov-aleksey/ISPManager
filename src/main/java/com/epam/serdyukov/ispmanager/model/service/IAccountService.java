@@ -1,28 +1,27 @@
 package com.epam.serdyukov.ispmanager.model.service;
 
 import com.epam.serdyukov.ispmanager.model.entity.Account;
-import com.epam.serdyukov.ispmanager.model.entity.User;
-
-import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * @author Aleksey Serdyukov
+ * Account service interface .
+ *
+ * @author Aleksey Serdyukov.
  */
 public interface IAccountService {
 
-    List<Account> findAll();
+  List<Account> findAll();
 
-    Account find(long id);
+  Account find(long id);
 
-    void save(Account account);
+  void save(Account account);
 
-    void update(Account account);
+  void update(Account account);
 
-    void remove(long id);
+  void remove(long id);
 
-    long getNumberContract();
+  long getNumberContract();
 
-    long getNextIdValue();
+  long getNextIdValue();
 
 }

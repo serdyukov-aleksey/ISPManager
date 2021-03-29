@@ -4,7 +4,12 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Transaction extends Entity{
+/**
+ * Transaction entity class.
+ *
+ * @author Aleksey Serdyukov.
+ */
+public class Transaction extends Entity {
   private static final long serialVersionUID = 1L;
   private LocalDateTime timestamp;
   private long account;
@@ -12,13 +17,18 @@ public class Transaction extends Entity{
   private boolean isCredit;
   private String description;
 
-  public Transaction(LocalDateTime timestamp, long account, BigDecimal amount, boolean isCredit, String description) {
+  /**
+   * All args constructor.
+   */
+  public Transaction(LocalDateTime timestamp, long account, BigDecimal amount, boolean isCredit,
+                     String description) {
     this.timestamp = timestamp;
     this.account = account;
     this.amount = amount;
     this.isCredit = isCredit;
     this.description = description;
   }
+
   public Transaction(){}
 
   public LocalDateTime getTimestamp() {
@@ -63,14 +73,18 @@ public class Transaction extends Entity{
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof Transaction)) return false;
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof Transaction)) {
+      return false;
+    }
     Transaction that = (Transaction) o;
-    return getAccount() == that.getAccount() &&
-        isCredit() == that.isCredit() &&
-        getTimestamp().equals(that.getTimestamp()) &&
-        Objects.equals(getAmount(), that.getAmount()) &&
-        Objects.equals(getDescription(), that.getDescription());
+    return getAccount() == that.getAccount()
+        && isCredit() == that.isCredit()
+        && getTimestamp().equals(that.getTimestamp())
+        && Objects.equals(getAmount(), that.getAmount())
+        && Objects.equals(getDescription(), that.getDescription());
   }
 
   @Override

@@ -3,16 +3,20 @@ package com.epam.serdyukov.ispmanager.model.service.impl;
 import com.epam.serdyukov.ispmanager.model.entity.Tariff;
 import com.epam.serdyukov.ispmanager.model.entity.User;
 import com.epam.serdyukov.ispmanager.model.repository.IUserRepo;
-import com.epam.serdyukov.ispmanager.model.service.*;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import com.epam.serdyukov.ispmanager.model.service.IAccountService;
+import com.epam.serdyukov.ispmanager.model.service.IContactDetailsService;
+import com.epam.serdyukov.ispmanager.model.service.IUserService;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 
 /**
- * @author Aleksey Serdyukov
+ * Transaction service interface implementation.
+ *
+ * @author Aleksey Serdyukov.
  */
 public class UserServiceImpl implements IUserService {
 
@@ -20,12 +24,14 @@ public class UserServiceImpl implements IUserService {
   private final IContactDetailsService detailsService;
   private final IAccountService accountService;
 
+  /**
+   * All args constructor.
+   */
   public UserServiceImpl(IUserRepo repo, IContactDetailsService detailsService,
                          IAccountService accountService) {
     this.repo = repo;
     this.detailsService = detailsService;
     this.accountService = accountService;
-
   }
 
 
@@ -91,12 +97,12 @@ public class UserServiceImpl implements IUserService {
 
   @Override
   public void updateFullUserToSession(HttpServletRequest request, HttpSession session, User user) {
-    User fullUser =  userToFullUser(user);
+    User fullUser = userToFullUser(user);
     session.setAttribute("fullUser", fullUser);
     request.setAttribute("fullUser", fullUser);
   }
 
-  private User userToFullUser (User user){
+  private User userToFullUser(User user) {
     user.setDetails(detailsService.find(user.getDetails().getId()));
     user.setAccount(accountService.find(user.getAccount().getId()));
     user.setTariffs(new HashSet<>(findUserTariffs(user)));

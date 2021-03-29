@@ -2,37 +2,39 @@ package com.epam.serdyukov.ispmanager.model.service;
 
 import com.epam.serdyukov.ispmanager.model.entity.Tariff;
 import com.epam.serdyukov.ispmanager.model.entity.User;
-
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.List;
+
 
 /**
- * @author Aleksey Serdyukov
+ * User service interface .
+ *
+ * @author Aleksey Serdyukov.
  */
 public interface IUserService {
 
-    List<User> findAll();
+  List<User> findAll();
 
-    List<User> findAllFullInfo();
+  List<User> findAllFullInfo();
 
-    User findByLoginFullInfo(String login);
+  User findByLoginFullInfo(String login);
 
-    User find(long id);
+  User find(long id);
 
-    void save(User user);
+  void save(User user);
 
-    void update(User user);
+  void update(User user);
 
-    void remove(int id);
+  void remove(int id);
 
-    User findByLogin(String login);
+  User findByLogin(String login);
 
-    List<Tariff> findUserTariffs(User user);
+  List<Tariff> findUserTariffs(User user);
 
-    void saveLinksUsersHasTariffs(User user, String[] tariffsId);
+  void saveLinksUsersHasTariffs(User user, String[] tariffsId);
 
-    void removeLinksUsersHasTariffs(User user);
+  void removeLinksUsersHasTariffs(User user);
 
-    void updateFullUserToSession(HttpServletRequest request, HttpSession session, User fullUser);
+  void updateFullUserToSession(HttpServletRequest request, HttpSession session, User fullUser);
 }

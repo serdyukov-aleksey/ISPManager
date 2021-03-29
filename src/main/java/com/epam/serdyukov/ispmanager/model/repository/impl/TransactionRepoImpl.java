@@ -5,16 +5,28 @@ import com.epam.serdyukov.ispmanager.model.builder.TransactionQueryBuilder;
 import com.epam.serdyukov.ispmanager.model.connectionpool.DBManager;
 import com.epam.serdyukov.ispmanager.model.entity.Transaction;
 import com.epam.serdyukov.ispmanager.model.repository.ITransactionRepo;
-
 import java.util.List;
 
+/**
+ * Transaction repository interface implementation.
+ *
+ * @author Aleksey Serdyukov.
+ */
 public class TransactionRepoImpl implements ITransactionRepo {
 
   private static final String GET_ALL = "SELECT * FROM transactions";
-  private static final String GET_BY_ID = "SELECT id, timestamp, account_id, amount, is_credit, description FROM transactions WHERE id= ?";
-  private static final String GET_BY_ACCCOUNT_ID = "SELECT id, timestamp, account_id, amount, is_credit, description FROM transactions WHERE account_id= ?";
-  private static final String CREATE = "INSERT INTO transactions (timestamp, account_id, amount, is_credit, description) VALUES(?, ?, ?, ?, ?)";
-  private static final String UPDATE = "UPDATE transactions SET timestamp = ?, account_id = ?, amount = ?, is_credit = ?, description = ? WHERE id = ?";
+  private static final String GET_BY_ID =
+      "SELECT id, timestamp, account_id, amount, is_credit, description FROM transactions "
+          + "WHERE id= ?";
+  private static final String GET_BY_ACCCOUNT_ID =
+      "SELECT id, timestamp, account_id, amount, is_credit, description FROM transactions "
+          + "WHERE account_id= ?";
+  private static final String CREATE =
+      "INSERT INTO transactions (timestamp, account_id, amount, is_credit, description) "
+          + "VALUES(?, ?, ?, ?, ?)";
+  private static final String UPDATE =
+      "UPDATE transactions SET timestamp = ?, account_id = ?, amount = ?, is_credit = ?, "
+          + "description = ? WHERE id = ?";
   private static final String DELETE = "DELETE FROM transactions WHERE id = ?";
 
   private DBManager instance = DBManager.getInstance();
@@ -32,19 +44,20 @@ public class TransactionRepoImpl implements ITransactionRepo {
 
   @Override
   public Transaction getById(long id) {
+
     return (Transaction) queryBuilder.executeAndReturn(instance, GET_BY_ID, id);
   }
 
   @Override
   public void create(Transaction transaction) {
-    queryBuilder.execute(instance, CREATE, transaction.getTimestamp(), transaction.getAccount(), transaction.getAmount(),
-        transaction.isCredit(), transaction.getDescription());
+    queryBuilder.execute(instance, CREATE, transaction.getTimestamp(), transaction.getAccount(),
+        transaction.getAmount(), transaction.isCredit(), transaction.getDescription());
   }
 
   @Override
   public void update(Transaction transaction) {
-    queryBuilder.execute(instance, UPDATE, transaction.getTimestamp(), transaction.getAccount(), transaction.getAmount(),
-        transaction.isCredit(), transaction.getDescription());
+    queryBuilder.execute(instance, UPDATE, transaction.getTimestamp(), transaction.getAccount(),
+        transaction.getAmount(), transaction.isCredit(), transaction.getDescription());
   }
 
   @Override

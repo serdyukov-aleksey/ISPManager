@@ -1,21 +1,22 @@
 package com.epam.serdyukov.ispmanager.model.service;
 
 import com.epam.serdyukov.ispmanager.model.entity.PackageService;
-
 import java.util.List;
 
 /**
- * @author Aleksey Serdyukov
+ * Package service interface .
+ *
+ * @author Aleksey Serdyukov.
  */
 public interface IPackageService {
 
-    List<PackageService> findAll();
+  List<PackageService> findAll();
 
-    PackageService find(long id);
+  PackageService find(long id);
 
-    void save(PackageService service);
+  void save(PackageService service);
 
-    void update(PackageService service);
+  void update(PackageService service);
 
-    void remove(long id);
+  void remove(long id);
 }

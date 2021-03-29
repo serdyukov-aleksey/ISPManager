@@ -19,13 +19,13 @@ import javax.servlet.http.HttpServletResponse;
 public class EditServicesCommand implements ICommand {
   @Override
   public String execute(HttpServletRequest request, HttpServletResponse response) {
-    IPackageService iPackageService = AppContext.getInstance().getPackageService();
-    ITariffService iTariffService = AppContext.getInstance().getTariffService();
+    IPackageService packageService = AppContext.getInstance().getPackageService();
+    ITariffService tariffService = AppContext.getInstance().getTariffService();
 
-    List<PackageService> services = iPackageService.findAll();
-    List<Tariff> internetTariffs = iTariffService.findAllById(1);
-    List<Tariff> iptvTariffs = iTariffService.findAllById(2);
-    List<Tariff> telephonyTariffs = iTariffService.findAllById(3);
+    List<PackageService> services = packageService.findAll();
+    List<Tariff> internetTariffs = tariffService.findAllById(1);
+    List<Tariff> iptvTariffs = tariffService.findAllById(2);
+    List<Tariff> telephonyTariffs = tariffService.findAllById(3);
 
     request.setAttribute("services", services);
     request.setAttribute("internetTariffs", internetTariffs);

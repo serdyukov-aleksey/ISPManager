@@ -1,13 +1,16 @@
 package com.epam.serdyukov.ispmanager.model.builder;
 
 import com.epam.serdyukov.ispmanager.model.entity.Transaction;
-import com.epam.serdyukov.ispmanager.model.entity.User;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Transaction entity query builder.
+ *
+ * @author Aleksey Serdyukov.
+ */
 public class TransactionQueryBuilder extends QueryBuilder<Transaction> {
 
   @Override

@@ -2,15 +2,19 @@ package com.epam.serdyukov.ispmanager.util;
 
 import com.epam.serdyukov.ispmanager.appcontext.AppContext;
 import com.epam.serdyukov.ispmanager.model.service.ITransactionService;
-import org.apache.log4j.Logger;
-
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
-import javax.servlet.annotation.WebListener;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
+import org.apache.log4j.Logger;
 
+/**
+ * Scheduler for save daily debts.
+ *
+ * @author Aleksey Serdyukov.
+ */
 @WebListener
 public class Scheduler implements ServletContextListener {
   private static final Logger log = Logger.getLogger(Scheduler.class);
@@ -28,6 +32,9 @@ public class Scheduler implements ServletContextListener {
     scheduler.shutdownNow();
   }
 
+  /**
+   * Runnable class for task.
+   */
   public class DailyTask implements Runnable {
 
     @Override
