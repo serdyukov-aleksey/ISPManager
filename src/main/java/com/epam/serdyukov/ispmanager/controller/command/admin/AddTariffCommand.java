@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author  Aleksey Serdyukov
  */
 public class AddTariffCommand implements ICommand {
+  ITariffService service = AppContext.getInstance().getTariffService();
+
   @Override
   public String execute(HttpServletRequest request, HttpServletResponse response) {
     String name = request.getParameter("name").trim();
@@ -30,7 +32,6 @@ public class AddTariffCommand implements ICommand {
     tariff.setDescription(description);
     tariff.setServiceId(Long.parseLong(serviceId));
 
-    ITariffService service = AppContext.getInstance().getTariffService();
     service.save(tariff);
     try {
       response.sendRedirect(resp);

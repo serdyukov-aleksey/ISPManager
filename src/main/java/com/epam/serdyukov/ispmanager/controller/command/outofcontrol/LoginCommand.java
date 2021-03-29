@@ -17,6 +17,8 @@ import org.mindrot.jbcrypt.BCrypt;
  * @author Aleksey Serdyukov
  */
 public class LoginCommand implements ICommand {
+  IUserService service = AppContext.getInstance().getUserService();
+
   @Override
   public String execute(HttpServletRequest request, HttpServletResponse response) {
     HttpSession session = request.getSession();
@@ -33,7 +35,7 @@ public class LoginCommand implements ICommand {
       request.setAttribute("errorMessage", errorMessage);
       return forward;
     }
-    IUserService service = AppContext.getInstance().getUserService();
+
     User user = service.findByLogin(login);
     if (user.getLogin() == null || !BCrypt.checkpw(password, user.getPassword())) {
       errorMessage = "Cannot find user with such login or password";
