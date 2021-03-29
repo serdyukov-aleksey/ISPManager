@@ -15,45 +15,18 @@
 <form class="form-signin" method="post" action="controller?action=login">
     <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal">ISP management console</h1>
-    <label for="login" class="sr-only"></label>
+    <label for="login" class="sr-only"><fmt:message key="login.label.login"/> </label>
     <input type="text" id="login" name="login" class="form-control" placeholder=<fmt:message key="login.placeholder.login"/> required autofocus>
-    <label for="password" class="sr-only">Password</label>
-    <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+    <label for="password" class="sr-only"><fmt:message key="login.label.password"/></label>
+    <input type="password" id="password" name="password" class="form-control" placeholder="<fmt:message key="login.placeholder.password"/>" required>
     <div class="checkbox mb-3">
         <label>
-            <input type="checkbox" value="remember-me"> Remember me
+            <input type="checkbox" value="remember-me"> <fmt:message key="login.checkbox.remember"/>
         </label>
     </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    <p class="mt-5 mb-3 text-muted">Don't have account? Sign up</p>
+    <button class="btn btn-lg btn-primary btn-block" type="submit"><fmt:message key="login.button.login"/></button>
     <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
 </form>
-
-<%--<div class="container">--%>
-<%--    <div class="d-flex justify-content-center">--%>
-<%--        <div class="card border-primary mb-3" style="width: 50%; margin-top: 100px ">--%>
-<%--            <form class="p-5" method="post" action="controller?action=login">--%>
-<%--                <div class="form-group">--%>
-<%--&lt;%&ndash;                    <c:if test="${not empty errorMessage}">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                        <div class="alert alert-danger" role="alert">${errorMessage}</div>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                    </c:if>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                    <label for="login"><fmt:message key="login.label.login"/></label>&ndash;%&gt;--%>
-<%--                    <label for="login">Login</label>--%>
-<%--                    <input type="text" class="form-control" id="login" name="login"--%>
-<%--                           placeholder="login...."--%>
-<%--                           value="+380" size="13" maxlength="13" required>--%>
-<%--                </div>--%>
-<%--                <div class="form-group">--%>
-<%--                    <label for="password">Password</label>--%>
-<%--                    <input type="password" class="form-control" id="password" name="password"--%>
-<%--                           placeholder="pass" minlength="6"--%>
-<%--                           maxlength="40" required>--%>
-<%--                </div>--%>
-<%--                <button type="submit" class="btn btn-primary">Do login</button>--%>
-<%--            </form>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
 <jsp:include page="/WEB-INF/templates/_scripts.jsp"></jsp:include>
 </body>
 </html>
