@@ -29,7 +29,7 @@
             </div>
         </div>
         <form class="form-inline my-2 my-lg-0" method="post" action="controller?action=logout">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><fmt:message key="mainmenu.button.logout"/></button>
         </form>
     </div>
 </nav>
