@@ -2,18 +2,18 @@ package com.epam.serdyukov.ispmanager.controller.command.outofcontrol;
 
 import com.epam.serdyukov.ispmanager.appcontext.AppContext;
 import com.epam.serdyukov.ispmanager.controller.Path;
+import com.epam.serdyukov.ispmanager.controller.command.ICommand;
 import com.epam.serdyukov.ispmanager.model.entity.Role;
 import com.epam.serdyukov.ispmanager.model.entity.User;
 import com.epam.serdyukov.ispmanager.model.service.IUserService;
-import com.epam.serdyukov.ispmanager.model.service.impl.UserServiceImpl;
-import com.epam.serdyukov.ispmanager.controller.command.ICommand;
-import org.mindrot.jbcrypt.BCrypt;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
+ * Login controller command.
+ *
  * @author Aleksey Serdyukov
  */
 public class LoginCommand implements ICommand {

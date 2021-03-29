@@ -5,12 +5,15 @@ import com.epam.serdyukov.ispmanager.controller.Path;
 import com.epam.serdyukov.ispmanager.controller.command.ICommand;
 import com.epam.serdyukov.ispmanager.model.entity.User;
 import com.epam.serdyukov.ispmanager.model.service.IUserService;
-import com.epam.serdyukov.ispmanager.model.service.impl.UserServiceImpl;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * User profile page controller command.
+ *
+ * @author Aleksey Serdyukov
+ */
 public class UserProfileCommand implements ICommand {
   private final IUserService userService = AppContext.getInstance().getUserService();
 

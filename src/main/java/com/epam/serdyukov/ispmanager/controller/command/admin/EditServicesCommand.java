@@ -2,25 +2,30 @@ package com.epam.serdyukov.ispmanager.controller.command.admin;
 
 import com.epam.serdyukov.ispmanager.appcontext.AppContext;
 import com.epam.serdyukov.ispmanager.controller.Path;
+import com.epam.serdyukov.ispmanager.controller.command.ICommand;
 import com.epam.serdyukov.ispmanager.model.entity.PackageService;
 import com.epam.serdyukov.ispmanager.model.entity.Tariff;
-import com.epam.serdyukov.ispmanager.model.service.*;
-import com.epam.serdyukov.ispmanager.controller.command.ICommand;
-
+import com.epam.serdyukov.ispmanager.model.service.IPackageService;
+import com.epam.serdyukov.ispmanager.model.service.ITariffService;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
+/**
+ * Edit services controller command.
+ *
+ * @author Aleksey Serdyukov
+ */
 public class EditServicesCommand implements ICommand {
   @Override
   public String execute(HttpServletRequest request, HttpServletResponse response) {
-    IPackageService IPackageService = AppContext.getInstance().getPackageService();
-    ITariffService ITariffService = AppContext.getInstance().getTariffService();
+    IPackageService iPackageService = AppContext.getInstance().getPackageService();
+    ITariffService iTariffService = AppContext.getInstance().getTariffService();
 
-    List<PackageService> services = IPackageService.findAll();
-    List<Tariff> internetTariffs = ITariffService.findAllById(1);
-    List<Tariff> iptvTariffs = ITariffService.findAllById(2);
-    List<Tariff> telephonyTariffs = ITariffService.findAllById(3);
+    List<PackageService> services = iPackageService.findAll();
+    List<Tariff> internetTariffs = iTariffService.findAllById(1);
+    List<Tariff> iptvTariffs = iTariffService.findAllById(2);
+    List<Tariff> telephonyTariffs = iTariffService.findAllById(3);
 
     request.setAttribute("services", services);
     request.setAttribute("internetTariffs", internetTariffs);

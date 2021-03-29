@@ -2,29 +2,34 @@ package com.epam.serdyukov.ispmanager.controller.command.client;
 
 import com.epam.serdyukov.ispmanager.appcontext.AppContext;
 import com.epam.serdyukov.ispmanager.controller.Path;
-import com.epam.serdyukov.ispmanager.model.entity.ContactDetails;
+import com.epam.serdyukov.ispmanager.controller.command.ICommand;
 import com.epam.serdyukov.ispmanager.model.entity.Tariff;
 import com.epam.serdyukov.ispmanager.model.entity.User;
-import com.epam.serdyukov.ispmanager.model.service.*;
+import com.epam.serdyukov.ispmanager.model.service.IAccountService;
+import com.epam.serdyukov.ispmanager.model.service.IContactDetailsService;
+import com.epam.serdyukov.ispmanager.model.service.ITariffService;
+import com.epam.serdyukov.ispmanager.model.service.ITransactionService;
+import com.epam.serdyukov.ispmanager.model.service.IUserService;
 import com.epam.serdyukov.ispmanager.util.ReportBuilder;
-import com.epam.serdyukov.ispmanager.controller.command.ICommand;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 
 /**
+ * Main user page controller command.
+ *
  * @author Aleksey Serdyukov
  */
 public class AccountCommand implements ICommand {
-  private final ITransactionService transactionService = AppContext.getInstance().getTransactionService();
+  private final ITransactionService transactionService =
+      AppContext.getInstance().getTransactionService();
   private final IUserService userService =  AppContext.getInstance().getUserService();
-  private final IContactDetailsService detailsService = AppContext.getInstance().getDetailsService();
   private final IAccountService accountService =  AppContext.getInstance().getAccountService();
   private final ITariffService tariffService = AppContext.getInstance().getTariffService();
 
@@ -41,15 +46,7 @@ public class AccountCommand implements ICommand {
     }
 
     if (request.getParameter("amount") != null) {
-      forward = topUpAccount(request, response, userService, accountService, fullUser);
-    }
-
-    if (request.getParameter("btnEmail") != null) {
-      forward = changeEmail(request, response, detailsService, fullUser);
-    }
-
-    if (request.getParameter("btnPassword") != null) {
-      forward = changePassword(request, response, userService, fullUser);
+      forward = topUpAccount(request, response);
     }
 
     List<Tariff> internetTariffs = tariffService.findAllById(1);
@@ -68,7 +65,6 @@ public class AccountCommand implements ICommand {
     return forward;
   }
 
-
   private void printTariff(HttpServletRequest request, HttpServletResponse response, User user) {
     long tariffId = Long.parseLong(request.getParameter("tariff_id"));
     Set<Tariff> tariffs = user.getTariffs();
@@ -79,7 +75,7 @@ public class AccountCommand implements ICommand {
     }
   }
 
-  private String topUpAccount(HttpServletRequest request, HttpServletResponse response, IUserService userService, IAccountService accountService, User user) {
+  private String topUpAccount(HttpServletRequest request, HttpServletResponse response) {
     HttpSession session = request.getSession();
     String resp = Path.COMMAND_ACCOUNT;
     User fullUser = (User) session.getAttribute("user");
@@ -96,46 +92,4 @@ public class AccountCommand implements ICommand {
     return resp;
   }
 
-  private String changeEmail(HttpServletRequest request, HttpServletResponse response, IContactDetailsService detailsService, User user) {
-    String errorMessage;
-    String resp = Path.COMMAND_ACCOUNT;
-    String email = request.getParameter("inputEmail");
-    if (email == null || email.isEmpty()) {
-      errorMessage = "Email can't be empty";
-      request.setAttribute("errorMessage", errorMessage);
-    } else {
-      ContactDetails detail = user.getDetails();
-      detail.setEmail(email);
-      detailsService.update(detail);
-      resp = Path.PAGE_ACCOUNT;
-      try {
-        response.sendRedirect(resp);
-        resp = Path.COMMAND_REDIRECT;
-      } catch (IOException e) {
-        resp = Path.PAGE_ERROR_PAGE;
-      }
-    }
-    return resp;
-  }
-
-  private String changePassword(HttpServletRequest request, HttpServletResponse response, IUserService userService, User user) {
-    String errorMessage;
-    String resp = Path.COMMAND_ACCOUNT;
-    String password = request.getParameter("inputPassword");
-    if (password == null || password.isEmpty()) {
-      errorMessage = "Password can't be empty";
-      request.setAttribute("errorMessage", errorMessage);
-      resp = Path.PAGE_ACCOUNT;
-    } else {
-      user.setPassword(password);
-      userService.update(user);
-      try {
-        response.sendRedirect(resp);
-        resp = Path.COMMAND_REDIRECT;
-      } catch (IOException e) {
-        resp = Path.PAGE_ERROR_PAGE;
-      }
-    }
-    return resp;
-  }
 }

@@ -6,13 +6,16 @@ import com.epam.serdyukov.ispmanager.controller.command.ICommand;
 import com.epam.serdyukov.ispmanager.model.entity.Transaction;
 import com.epam.serdyukov.ispmanager.model.entity.User;
 import com.epam.serdyukov.ispmanager.model.service.ITransactionService;
-import com.epam.serdyukov.ispmanager.model.service.impl.TransactionServiceImpl;
-
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
+/**
+ * Transactions page controller command.
+ *
+ * @author Aleksey Serdyukov
+ */
 public class TransactionCommand implements ICommand {
   @Override
   public String execute(HttpServletRequest request, HttpServletResponse response) {
