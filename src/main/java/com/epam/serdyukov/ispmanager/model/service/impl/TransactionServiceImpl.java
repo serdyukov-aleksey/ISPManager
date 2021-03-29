@@ -61,6 +61,22 @@ public class TransactionServiceImpl implements ITransactionService {
   }
 
   @Override
+  public void recalcBalanceAndBlockByAllUsers() {
+    List<User> users = userService.findAllFullInfo();
+    for (User user: users){
+      Account account = user.getAccount();
+      BigDecimal balance = calcTransactionsByAccount(account.getId());
+      account.setBalance(balance);
+      accountService.update(account);
+
+      if (!user.isBlocked() && balance.compareTo(BigDecimal.ZERO) < 0) {
+        user.setBlocked(true);
+        userService.update(user);
+      }
+    }
+  }
+
+  @Override
   public void topUp(User user, BigDecimal amount) {
     Transaction transaction = new Transaction();
     transaction.setTimestamp(LocalDateTime.now());
@@ -79,6 +95,7 @@ public class TransactionServiceImpl implements ITransactionService {
       userService.update(user);
     }
   }
+
 
   @Override
   public void save(Transaction transaction) {

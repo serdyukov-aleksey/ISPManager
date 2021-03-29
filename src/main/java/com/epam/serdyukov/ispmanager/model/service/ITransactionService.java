@@ -18,4 +18,6 @@ public interface ITransactionService {
   List<Transaction> getAllByAccount (long id);
 
   void topUp(User user, BigDecimal amount);
+
+  void recalcBalanceAndBlockByAllUsers();
 }

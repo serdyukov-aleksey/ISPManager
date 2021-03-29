@@ -33,6 +33,7 @@ public class Scheduler implements ServletContextListener {
     @Override
     public void run() {
       transactionService.saveDailyDebtsByAllUsers();
+      transactionService.recalcBalanceAndBlockByAllUsers();
       log.info("Daily user debts completed by schedulers");
     }
 
