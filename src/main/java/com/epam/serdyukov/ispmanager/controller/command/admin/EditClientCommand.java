@@ -21,14 +21,14 @@ import javax.servlet.http.HttpSession;
  * @author Aleksey Serdyukov
  */
 public class EditClientCommand implements ICommand {
+  IUserService userService = AppContext.getInstance().getUserService();
+  IContactDetailsService detailsService = AppContext.getInstance().getDetailsService();
+  IAccountService accountService = AppContext.getInstance().getAccountService();
+
   @Override
   public String execute(HttpServletRequest request, HttpServletResponse response) {
     long id = Long.parseLong(request.getParameter("user_id"));
     String forward = Path.COMMAND_SHOW_USERS;
-
-    IUserService userService = AppContext.getInstance().getUserService();
-    IContactDetailsService detailsService = AppContext.getInstance().getDetailsService();
-    IAccountService accountService = AppContext.getInstance().getAccountService();
 
     User user;
     if (id != 0) {
